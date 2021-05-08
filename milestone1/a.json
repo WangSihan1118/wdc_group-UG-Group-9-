@@ -1,0 +1,51 @@
+User:
+{
+    "Password": "12ckuoi324y273n",
+    "Health Situation": true,
+    "Contact details": [{
+        {
+            "Social_meida_account_token": "rchp932ntcqgtcn4c4",
+            "Email": "axxxxxx@gmail.com",
+            "Phonenumber": "5345343",
+            "FirstName": "Doe",
+            "LastName": "John"
+        }
+    }]
+}
+
+Contact:
+{
+    "Social_meida_account_token": "rchp932ntcqgtcn4c4",
+    "Email": "axxxxxx@gmail.com",
+    "Phonenumber": "5345343",
+    "FirstName": "Doe",
+    "LastName": "John",
+}
+
+Trip:
+{
+    "Venue": [{
+        "Venue_Name": "xxx",
+        "Latitude": "aa.bb",
+        "Longitude": "aa.bb",
+        "Countries": "Australia",
+        "State": "SA",
+        "City": "Adelaide",
+        "Suburb": "Adelaide",
+        "Detailed_address": "NO.21 xxx Street",
+    }],
+    "Arrival time": "(timestamp)",
+    "Leave time": "(timestamp)"
+}
+
+Venue:
+{
+    "Venue_Name": "xxx",
+    "Latitude": "aa.bb",
+    "Longitude": "aa.bb",
+    "Countries": "Australia",
+    "State": "SA",
+    "City": "Adelaide",
+    "Suburb": "Adelaide",
+    "Detailed_address": "NO.21 xxx Street",
+}

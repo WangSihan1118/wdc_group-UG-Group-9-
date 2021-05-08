@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>   
+        <title>Group</title>
+
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="a.css">
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <script src="vue.js" defer></script>
+        <script src="a.js" defer></script>
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />       
+    </head>
+
+    <body>
+        <div id = "app">
+            <div class = "header">
+                <span>COVID-19</span>
+                <button class = "pure-button pure-button-primary">Login</button>
+                <button class = "pure-button pure-button-primary">Check-in</button>
+            </div>
+
+            <nav class="pure-menu pure-menu-horizontal">
+                <ul id="topmenu" v-for="ITEM in top_menu" class="pure-menu-list">
+                    <li class="pure-menu-item"><a href="ITEM.URL" class="pure-menu-link">{{ITEM.title}}</a></li>
+                </ul>
+                <div class="pure-menu">
+                    <ul id="submenu" class="pure-menu-list">
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <div id='map' style='width: 400px; height: 300px;'></div>
+        <script>
+            mapboxgl.accessToken = 'pk.eyJ1Ijoid3NoMjAwMDExMTgiLCJhIjoiY2tnamV3dGR1MDJibzJ6bWowaXJhNGN0bCJ9.RR7naYtzwtAlo7dL7KBWbQ';
+            var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11'
+            });
+        </script>
+
+        <p>Rolling information in future plan</p>
+    </body>
+</html>
+ 
