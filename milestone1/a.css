@@ -8,12 +8,14 @@
 }
 
 #function_area{
-    width: 20%;
+    border-right-style: solid;
+    border-width: 2px;
+    width: 25%;
     float: left;
 }
 
 #context_area{
-    width: 80%;
+    width: 74%;
     float: right;
 }
 
