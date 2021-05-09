@@ -20,17 +20,19 @@
                 <p>Welcome,dear user</p>
                 <button class = "pure-button pure-button-primary">Check-in</button>
             </div>
-
-            <nav class="pure-menu">
-                <ul id="topmenu" v-for="ITEM in vmenu" class="pure-menu-list">
-                    <li class="pure-menu-item"><a href="ITEM.URL" class="pure-menu-link">{{ITEM.title}}</a></li>
-                </ul>
-                <div class="pure-menu">
-                    <ul id="submenu" class="pure-menu-list">
-
-                    </ul>
+            <div class = "bodydiv">
+                <div id = "function_area">
+                    <nav class="pure-menu">
+                        <ul id="topmenu" v-for="ITEM in vmenu" class="pure-menu-list">
+                            <li class="pure-menu-item"><a href="ITEM.URL" class="pure-menu-link">{{ITEM.title}}</a></li>
+                        </ul>
+                    </nav>
                 </div>
-            </nav>
+            
+                <div id = "context_area">
+                    <p>context</p>
+                </div>
+            </div>
         </div>
 
     </body>

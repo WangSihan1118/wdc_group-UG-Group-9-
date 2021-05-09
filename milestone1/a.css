@@ -1,3 +1,13 @@
 .header{
     background-color:yellowgreen;
 }
+
+#function_area{
+    width: 50%;
+    float: left;
+}
+
+#context_area{
+    width: 50%;
+    float: right;
+}
