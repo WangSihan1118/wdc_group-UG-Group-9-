@@ -2,12 +2,21 @@
     background-color:yellowgreen;
 }
 
+.Accountheader{
+    background-color:yellowgreen;
+    padding: 40px;
+}
+
 #function_area{
-    width: 50%;
+    width: 20%;
     float: left;
 }
 
 #context_area{
-    width: 50%;
+    width: 80%;
+    float: right;
+}
+
+#Welcome{
     float: right;
 }
