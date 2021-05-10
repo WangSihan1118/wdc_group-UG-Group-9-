@@ -3,8 +3,14 @@
 }
 
 .Accountheader{
-    background-color:yellowgreen;
-    padding: 40px;
+    background-color:rgb(227, 241, 18);
+    padding: 60px;
+}
+
+#Accountheader2{
+    background-color:rgb(227, 241, 18);
+    display:contents;
+    padding: 36.8px;
 }
 
 #function_area{
@@ -21,4 +27,5 @@
 
 #Welcome{
     float: right;
+
 }
