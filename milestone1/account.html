@@ -16,7 +16,9 @@
     <body>
         <div id = "manage">
             <div class = "Accountheader">
-                <div>COVID-19</div>
+                <div>
+                    COVID-19
+                </div>
                 <span id = "Welcome">
                     <span>Welcome,dear user</span>
                     <button class = "pure-button pure-button-primary">Check-in</button>
@@ -26,14 +28,15 @@
                 <div id = "function_area">
                     <nav class="pure-menu">
                         <ul id="topmenu" v-for="item in vmenu" class="pure-menu-list">
-                            <li class="pure-menu-item"><a href= "javascript:void(0);" @click = "item.method" class="pure-menu-link">{{item.title}}</a></li>
+                            <li class="pure-menu-item"><a v-bind:href= "item.url" class="pure-menu-link">{{item.title}}</a></li>
                         </ul>
                     </nav>
                 </div>
-            
+                <!--
                 <div id = "context_area">
                     <p>context</p>
                 </div>
+                -->
             </div>
         </div>
     </body>
