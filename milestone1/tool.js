@@ -41,6 +41,7 @@ var AccountManage = new Vue({
             { title:'(User) View My Trip History', url:'./manage/view_my_trip.html' },
             { title:'(Venue Owner) Manage My Venue', url:'./manage/manage_venue.html' },
             { title:'(Venue Owner) View Venue Visit History', url:'./manage/view_venue_history.html' },
+            {title:'(Admin) Change Admin Information', url:'./manage/admin_change_my_infor.html'}
             { title:'(Admin) Regsister a New Admin', url:'./manage/RegisterAdmin.html' },
             { title:'(Admin)Manage User', url:'./manage/manage_user.html' },
             { title:'(Admin)Manage Venue', url:'./manage/admin_manage_venue.html' },
