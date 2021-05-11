@@ -14,18 +14,22 @@
     </head>
 
     <body>
+        <div id = "manage_venue">
         <p>admin manage vue</p>
         <input></input>
         <button>search</button>
-        <table  class="pure-table">
+        <table class="pure-table">
+            <th>Venue id</th>
             <th>Venue name</th>
             <th>Manage</th>
             <th>View check-in history</th>
-            <tr>
-                <td>someplace</td>
-                <td><a href = "manage_venue.html">Edit Venue</a></td>
+            <tr v-for ="venue in venueList">
+                <td>{{venue.id}}</td>
+                <td>{{venue.name}}</td>
+                <td><a href = "change_my_infor.html">Edit venue</a></td>
                 <td><a href = "view_venue_history.html">View check-in history of venue</a></td>
             </tr>
         <table>
+        </div>
     </body>
 </html>
