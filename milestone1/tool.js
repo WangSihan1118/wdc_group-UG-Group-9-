@@ -39,8 +39,8 @@ var AccountManage = new Vue({
         vmenu : [
             { title:'(User) Change My Information', url:'./manage/change_my_infor.html' },
             { title:'(User) View My Trip History', url:'./manage/view_my_trip.html' },
-            { title:'(Venue Owner) Manage My Venue', url:'./manage/manage_venue.html' },
-            { title:'(Venue Owner) View Venue Visit History', url:'./manage/view_venue_history.html' },
+            { title:'(Venue Owner) Edit Venue manager information', url:'./manage/Edit_Venue_manager_information.html' },
+            { title:'(Venue Owner) Manage My Venue', url:'./manage/Show_my_venue.html' },
             { title:'(Admin) Change Admin Information', url:'./manage/admin_change_my_infor.html' },
             { title:'(Admin) Regsister a New Admin', url:'./manage/RegisterAdmin.html' },
             { title:'(Admin) Manage User', url:'./manage/admin_manage_user.html' },
@@ -165,6 +165,32 @@ var checkin_history = new Vue({
         checkinHirstory:[
             { id:"u1234567",venue_name:"someplace",arrival_time:"23:09 10/5/2021"},
             { id:"u1234567",venue_name:"someplace",arrival_time:"23:10 10/5/2021"},
+        ],
+        };
+    },
+});
+
+var Manager_Infor = new Vue({
+    el:"#Manager_Infor",
+    data(){
+        return{
+        user_form:[
+            { title:"First name:"},
+            { title:"Last name:"},
+            { title:"Phone number:"},
+            { title:"Email:"},
+            { title:"Home adress:"},
+        ],
+        };
+    },
+});
+
+var Owner_manage_venue = new Vue({
+    el:"#Owner_manage_venue",
+    data(){
+        return{
+        Owener_s_venueList:[
+            { id:"v123456",name:"Someplace"},
         ],
         };
     },
