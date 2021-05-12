@@ -4,7 +4,7 @@
         <title>User center</title>
 
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="format.css">
+        <link rel="stylesheet" href="../format.css">
         <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
         <script src="../vue.js" defer></script>
@@ -12,7 +12,11 @@
         <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
         <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />       
     </head>
-
+    <style>
+        .button-error {
+            background: rgb(202, 60, 60); /* this is a maroon */
+        }
+    </style>
     <body>
         <div id = "Venue_infor">
             <form class="pure-form pure-form-stacked">
@@ -31,6 +35,9 @@
                     </select>
             
                     <button type="submit" class="pure-button pure-button-primary">Confirm</button>
+                    <br>
+                    <br>
+                    <button type="submit" class="button-error pure-button">DELETE THIS VENUE</button>
                 </fieldset>
             </form>
         </div>

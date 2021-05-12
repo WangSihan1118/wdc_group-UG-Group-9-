@@ -14,22 +14,23 @@
     </head>
 
     <body>
-        <div id = "User_Infor">
+        <div id = "Venue_infor">
             <form class="pure-form pure-form-stacked">
                 <fieldset>
-                    <legend>Your ID is u1234567</legend>
-                    
-                    <div v-for="text in user_form">
-                    <label for="text.title">{{text.title}}</label>
-                    <input id="text.title" type ="text" placeholder="">
+                    <legend>Your Venue ID is v1234567</legend>
+            
+                    <div v-for="text in venue_form">
+                        <label for="text.title">{{text.title}}</label>
+                        <input id="text.title" type ="text" placeholder="">
                     </div>
-                    <label for="state of health">State of Health</label>
-                    <select id="state of health">
-                        <option value ="postive">postive</option>
-                        <option value ="negative" selected = "selected">negative</option>
+            
+                    <label for="Hotspot setting:">Hotspot setting:</label>
+                    <select>
+                        <option value ="Hotspot">Flagged as hotspot</option>
+                        <option value ="Not_Hotspot" selected = "selected">Not hotspot</option>
                     </select>
-                    
-                    <button type="submit" class="pure-button pure-button-primary">Confirm</button>
+            
+                    <button type="submit" class="pure-button pure-button-primary">Create</button>
                 </fieldset>
             </form>
         </div>
