@@ -1,5 +1,5 @@
 .header{
-    background-color:yellowgreen;
+    background-color:darkgreen
 }
 
 .Accountheader{
@@ -14,10 +14,10 @@
 }
 
 #function_area{
-    border-right-style: solid;
-    border-width: 2px;
-    width: 25%;
+    width: 27%;
     float: left;
+    background-color:darkseagreen;
+    height: 100%;
 }
 
 #context_area{
@@ -31,7 +31,7 @@
 
 #login_body{
     position: absolute;
-    width:30%;
+    width:35%;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -83,3 +83,36 @@
     height: 50%;
 }
 
+.button-error {
+    background: rgb(202, 60, 60); /* this is a maroon */
+}
+
+.logo{
+    text-align:center;
+
+}
+.covid{
+    text-align: left;
+    font-size: 220%;
+    color:snow;
+    font-family: sans-serif;
+}
+.login{
+    text-align: right;
+    font-size: 150%;
+}
+
+#main_menu{
+    background-color:darkseagreen;
+    text-align: center;
+    vertical-align: central;
+    padding-top: 20px;
+}
+
+#map{
+    text-align: center;
+    margin: auto;
+    display: inline-block;
+    width: 100%; 
+    height: 500px;
+}

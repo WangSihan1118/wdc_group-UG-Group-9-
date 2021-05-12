@@ -2,7 +2,7 @@
 <html>
     <head>   
         <title>Admin</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="UTF-8">
         <link rel="stylesheet" href="format.css">
         <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
@@ -15,27 +15,29 @@
 
     <body>
         <div id = "manage">
-            <div class = "Accountheader">
-                <div>
-                    COVID-19
-                </div>
-                <span id = "Welcome">
-                    <span>Welcome,dear user</span>
-                    <button class = "pure-button pure-button-primary">Check-in</button>
+            <div class = "header">
+                <div class = "covid">COVID-19</div>
+                <span id="logo"><img  src="image/coronavirus.jpg" width="11%" height="11%" ></span>
+                <span>
+                    <span id = "Welcome">
+                        <span style="color: snow;">Welcome,dear user</span>
+                        <a href="checkin.html"><button class = "pure-button pure-button-primary">Check-in</button></a>
+                    </span>
                 </span>
             </div>
             <div class = "bodydiv">
                 <div id = "function_area">
                     <nav class="pure-menu">
                         <ul id="topmenu" v-for="item in vmenu" class="pure-menu-list">
-                            <li class="pure-menu-item"><a v-bind:href= "item.url" class="pure-menu-link">{{item.title}}</a></li>
+                            <li class="pure-menu-item"><a v-bind:href= "item.url" class="pure-menu-link" style="color:black;">{{item.title}}</a></li>
                         </ul>
                     </nav>
                 </div>
             
                 <div id = "context_area">
-                    <p>context</p>
+                    
                 </div>
+                <div style="clear: both;"></div>
             </div>
         </div>
     </body>
