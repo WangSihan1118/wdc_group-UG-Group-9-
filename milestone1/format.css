@@ -27,5 +27,60 @@
 
 #Welcome{
     float: right;
-
 }
+
+#login_body{
+    position: absolute;
+    width:30%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid ;
+    padding: 10px;
+    box-shadow:  5px 5px #888888;
+    background-color: rgba(243, 243, 243, 0.979);
+}
+
+.login_input{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.checkin_input{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.Register_input{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#check_in_area{
+    width: 100%;
+    height: 100%
+}
+
+#left_checkin_area{
+    width: 50%;
+    height: 50%;
+}
+
+#right_checkin_area{
+    width: 50%;
+    height: 50%;
+}
+
+
