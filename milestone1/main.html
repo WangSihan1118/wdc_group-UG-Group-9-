@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head>   
+    <head>
         <title>Group</title>
 
         <meta charset="UTF-8">
@@ -10,17 +10,23 @@
         <script src="vue.js" defer></script>
         <script src="a.js" defer></script>
         <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
-        <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />       
+        <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+
     </head>
 
-    <body>
+    <body id = "body">
         <div id = "app">
             <div class = "header">
-                <span>COVID-19</span>
-                <button class = "pure-button pure-button-primary">Login</button>
-                <button class = "pure-button pure-button-primary">Check-in</button>
+                <div class = "covid" > COVID-19</div>
+                <div id="logo" align="center"><img  src="images/coronavirus.jpg" width="8%" height="8%" ></div>
+                <div class ="login" >
+                   <button class = "pure-button pure-button-primary">Login</button>
+                <!--<button class = "pure-button pure-button-primary">Check-in</button>-->
+                </div>
+
             </div>
 
+            <div id ="main_menu">
             <nav class="pure-menu pure-menu-horizontal">
                 <ul id="topmenu" v-for="ITEM in top_menu" class="pure-menu-list">
                     <li class="pure-menu-item"><a href="ITEM.URL" class="pure-menu-link">{{ITEM.title}}</a></li>
@@ -32,8 +38,9 @@
                 </div>
             </nav>
         </div>
-
-        <div id='map' style='width: 400px; height: 300px;'></div>
+        </div>
+        <hr>
+        <div id='map' style='width: 500px; height: 400px;' ></div>
         <script>
             mapboxgl.accessToken = 'pk.eyJ1Ijoid3NoMjAwMDExMTgiLCJhIjoiY2tnamV3dGR1MDJibzJ6bWowaXJhNGN0bCJ9.RR7naYtzwtAlo7dL7KBWbQ';
             var map = new mapboxgl.Map({
@@ -45,4 +52,3 @@
         <p>Rolling information in future plan</p>
     </body>
 </html>
- 

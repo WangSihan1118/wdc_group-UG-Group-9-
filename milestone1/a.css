@@ -1,3 +1,36 @@
+
+
 .header{
-    background-color:yellowgreen;
+    background-color:#077e7a;
+}
+
+.logo{
+    text-align:center;
+
+}
+.covid{
+    text-align: center;
+    font-size: 220%;
+    color : #1a2a3a;
+    font-family: sans-serif;
+
+
+}
+.login{
+    text-align: right;
+    font-size: 150%;
+
+}
+
+#main_menu{
+    background-color:#fcae62;
+    text-align: center;
+    vertical-align: center;
+    padding-top: 20px;
+
+}
+
+#map{
+    text-align: center;
+    margin: auto;
 }
