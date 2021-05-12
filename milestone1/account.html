@@ -1,38 +1,43 @@
 <!DOCTYPE html>
 <html>
     <head>   
-        <title>Group</title>
-
+        <title>Admin</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="a.css">
+        <link rel="stylesheet" href="format.css">
         <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
         <script src="vue.js" defer></script>
-        <script src="a.js" defer></script>
+        <script src="tool.js" defer></script>
         <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
         <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />       
     </head>
 
     <body>
         <div id = "manage">
-            <div class = "header">
-                <span>COVID-19</span>
-                <p>Welcome,dear user</p>
-                <button class = "pure-button pure-button-primary">Check-in</button>
-            </div>
-
-            <nav class="pure-menu">
-                <ul id="topmenu" v-for="ITEM in vmenu" class="pure-menu-list">
-                    <li class="pure-menu-item"><a href="ITEM.URL" class="pure-menu-link">{{ITEM.title}}</a></li>
-                </ul>
-                <div class="pure-menu">
-                    <ul id="submenu" class="pure-menu-list">
-
-                    </ul>
+            <div class = "Accountheader">
+                <div>
+                    COVID-19
                 </div>
-            </nav>
+                <span id = "Welcome">
+                    <span>Welcome,dear user</span>
+                    <button class = "pure-button pure-button-primary">Check-in</button>
+                </span>
+            </div>
+            <div class = "bodydiv">
+                <div id = "function_area">
+                    <nav class="pure-menu">
+                        <ul id="topmenu" v-for="item in vmenu" class="pure-menu-list">
+                            <li class="pure-menu-item"><a v-bind:href= "item.url" class="pure-menu-link">{{item.title}}</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            
+                <div id = "context_area">
+                    <p>context</p>
+                </div>
+            </div>
         </div>
-
     </body>
 </html>
  
