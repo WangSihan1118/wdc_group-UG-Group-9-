@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="format.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+  </head>
+<body>
+  
+  <div id = "login_body">
+    <h2 style="text-align: center;">Login</h2>
+    <hr>
+    <form style="text-align:center ;">
+      <label for="User"><input type="radio" name="AccountType" id = "User" value="User">User</label>
+      <label for="Venue_manager"><input type="radio" name="AccountType" id = "Venue_manager" value="Venue_manager">Venue manager</label>
+      <label for="Admin"><input type="radio" name="AccountType" id = "Admin" value="Admin">Admin</label>
+    </form>
+    <form  class="pure-form pure-form-stacked">
+      <fieldset>
+          <label for = "username">USERNAME:</label>
+          <input class = "login_input" type="text" id="username">
+          <label for ="password">PASSWORD:</label>
+          <input class = "login_input" type="text" id="password">
+          
+          <a href="#" style="float: left;">Forgot your password?</a>
+          <a href="Register.html" style="float: right;">Create a new account</a>
+          <br>
+          <p>login in via third-party account:</p>
+        
+      </fieldset>
+    </form>
+    <a href="account.html"><button type="submit" class="pure-button pure-button-primary" style="float: right;">SIGN-IN</button></a>
+  </div>
+</body>
+</html>

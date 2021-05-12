@@ -1,15 +1,47 @@
+<!DOCTYPE html>
 <html>
+    <head>
+        <title>Group</title>
 
-<head>
-  <title>wdc_group_project</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="/milestone1/format.css">
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <script src="/milestone1/vue.js" defer></script>
+        <script src="/milestone1/tool.js" defer></script>
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet'/>
+    </head>
 
-<body>
-  <div>
-    <p>Log in</p>
+    <body id = "body">
+        <div id = "app">
+            <div class = "header">
+                <div class = "covid">COVID-19</div>
+                <div id="logo"><img  src="image/coronavirus.jpg" width="11%" height="11%" ></div>
+                <div class ="login">
+                   <a href="milestone1/login.html"><button class = "pure-button pure-button-primary">Login</button></a>
+                </div>
+            </div>
 
-  </div>
-</body>
-
+            <div id ="main_menu">
+            <nav class="pure-menu pure-menu-horizontal">
+                <ul id="topmenu" v-for="ITEM in top_menu" class="pure-menu-list">
+                    <li class="pure-menu-item"><a class="pure-menu-link" style="color: black;">{{ITEM.title}}</a></li>
+                </ul>
+            </nav>
+            </div>
+        </div>
+        <hr>
+        <div id='map'></div>
+        <script>
+        mapboxgl.accessToken = 'pk.eyJ1Ijoid3NoMjAwMDExMTgiLCJhIjoiY2tnamV3dGR1MDJibzJ6bWowaXJhNGN0bCJ9.RR7naYtzwtAlo7dL7KBWbQ';
+        var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11'
+        });
+        </script>
+        <p style="text-align: center;">
+            Some Other information
+        </p>
+    </body>
 </html>
