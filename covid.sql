@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `covid` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `covid`;
 -- MySQL dump 10.13  Distrib 8.0.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: covid
@@ -183,6 +185,7 @@ CREATE TABLE `venue` (
   `detailed_address` varchar(45) DEFAULT NULL,
   `name` varchar(45) DEFAULT NULL,
   `check_in_code` varchar(45) DEFAULT NULL,
+  `hotspot` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -193,7 +196,7 @@ CREATE TABLE `venue` (
 
 LOCK TABLES `venue` WRITE;
 /*!40000 ALTER TABLE `venue` DISABLE KEYS */;
-INSERT INTO `venue` VALUES (1,-34.92610168457031,138.59988403320312,NULL,NULL,NULL,NULL,NULL,'Adelaide',NULL);
+INSERT INTO `venue` VALUES (1,-34.92610168457031,138.59988403320312,NULL,NULL,NULL,NULL,NULL,'Adelaide',NULL,NULL);
 /*!40000 ALTER TABLE `venue` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -206,4 +209,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-31  2:28:00
+-- Dump completed on 2021-06-02 10:17:30
