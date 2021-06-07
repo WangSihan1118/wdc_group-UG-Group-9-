@@ -6,7 +6,7 @@ function Admin_updateAdminInfor() {
     var address = document.getElementById("Home address").value;
 
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "/user/Admin_updateAdminInfor", true);
+    xhttp.open("POST", "/admins/Admin_updateAdminInfor", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify({ 
         name: name, 
@@ -23,7 +23,7 @@ function Admin_signinAdmin() {
     var dpwd = document.getElementById("double_check").value;
 
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "/user/updateUserInfor", true);
+    xhttp.open("POST", "/admins/updateUserInfor", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify({ 
         email:email,
@@ -34,7 +34,7 @@ function Admin_signinAdmin() {
 //Manager User
 function Jumpto_Admin_manage_user(){
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "/user/Admin_Manage_user", true);
+    xhttp.open("GET", "/admins/Admin_Manage_user", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify({ 
 
@@ -43,7 +43,7 @@ function Jumpto_Admin_manage_user(){
 
 function Jumpto_Admin_View_user_trip_history(){
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "/user/Admin_view_user_trip", true);
+    xhttp.open("GET", "/admins/Admin_view_user_trip", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify({ 
     }));
@@ -52,7 +52,7 @@ function Jumpto_Admin_View_user_trip_history(){
 //admin_manage_venue.html
 function Jumpto_Admin_manage_venue(){
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "/user/Admin_Manage_venue", true);
+    xhttp.open("GET", "/admins/Admin_Manage_venue", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify({ 
 
@@ -61,7 +61,7 @@ function Jumpto_Admin_manage_venue(){
 
 function Jumpto_Admin_View_venue_trip_history(){
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "/user/Admin_View_venue_trip_history", true);
+    xhttp.open("GET", "/admins/Admin_View_venue_trip_history", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify({ 
     }));

@@ -9,7 +9,7 @@ function Manager_updateManagerInfor() {
 
 
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "/user/updateManagerInfor", true);
+    xhttp.open("POST", "/managers/updateManagerInfor", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify({ 
         first_name: first_name, 
@@ -28,7 +28,7 @@ function jumpto_Venue_CreateNew(){
         if (this.readyState == 4 && this.status == 200) {
         }
     };
-    xhttp.open("GET", "user/createNewVenue", true);
+    xhttp.open("GET", "/managers/createNewVenue", true);
     xhttp.send();
 }
 
