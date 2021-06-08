@@ -42,6 +42,7 @@ router.post('/login',function(req,res,next){
                 return;
             }
             if(rows){
+                req.session.login = true;
                 req.session.type = login_type;
                 req.session.ID = ID;
                 res.send(true);
@@ -54,7 +55,6 @@ router.post('/login',function(req,res,next){
 
 router.post('/register',function(req,res,next){
     req.pool.getConnection( function(err,connection) {
-        //var user_id = req.session.user_id;
         var number = req.body.number;
         var pwd = req.body.pwd;
         var r_type= req.body.r_type;
@@ -69,10 +69,8 @@ router.post('/register',function(req,res,next){
         var sql_params = new Array();
         sql_params.push(pwd);
         sql_params.push(number);
-        //sql_params.push(user_id);
 
         if (err) {
-            console.log(err+"1");
             res.sendStatus(500);
             return;
         }
@@ -92,15 +90,10 @@ router.post('/register',function(req,res,next){
         connection.query(query2,function(err, rows, fields) {
             connection.release(); // release connection
             if (err) {
-                console.log(err+"3");
                 res.sendStatus(500);
                 return;
             }
-            console.log(rows);
             rows = JSON.stringify(rows);
-            console.log(rows);
-            var new_aid = rows[0].ID;
-            console.log(new_aid);
             res.send(rows);
         });
     });
@@ -108,25 +101,33 @@ router.post('/register',function(req,res,next){
 
 router.post('/checkin',function(req,res,next){
     req.pool.getConnection( function(err,connection) {
-        //var user_id = req.session.user_id;
-        var login_type= req.body.ck;
-
+        var user_id = req.session.ID;
+        var venue_id= req.body.ck;
+        var t = new Date().toISOString().slice(0, 19).replace('T', ' ');
+        
+        console.log(req.session.ID);
+        console.log(venue_id);
+        console.log(t);
+        
         var sql_params = new Array();
-        sql_params.push(first_name);
-        //sql_params.push(user_id);
+        sql_params.push(t);
+        sql_params.push(venue_id);
+        sql_params.push(user_id);
 
         if (err) {
+            console.log(err+"1");
             res.sendStatus(500);
             return;
         }
-        var query = "UPDATE user SET first_name= ?, last_name = ?,phone_number = ?, email = ?,address = ?, health = ? where ID = ?";
+        var query = "INSERT INTO trip(arrival_time,venue_id,user_id) VALUES(?,?,?);";
         connection.query(query, sql_params,function(err, rows, fields) {
             connection.release(); // release connection
             if (err) {
+                console.log(err+"2");
                 res.sendStatus(500);
                 return;
             }
-            res.json(rows);
+            res.send(true);
         });
     });
 });
