@@ -6,6 +6,7 @@
     <title>Register</title>
     <link rel="stylesheet" type="text/css" href="format.css">
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+    <script src="/javascripts/help.js" defer></script>
   </head>
 <body>
   
@@ -18,20 +19,20 @@
     </form>
     <form  class="pure-form pure-form-stacked">
       <fieldset>
-        <label for="Email:">Email:</label>
-        <input class = "Register_input" type ="text" placeholder="">
+        <label for="Phone number:">Phone number:</label>
+        <input class = "Register_input" id = "number" type ="text" placeholder="">
 
         <label for="Password:">Password:</label>
-        <input class = "Register_input" type ="password" placeholder="">
+        <input class = "Register_input" id = "pwd" type ="password" placeholder="">
 
         <label for="Confirm Password:">Confirm Password:</label>
-        <input class = "Register_input" type ="password" placeholder="">
+        <input class = "Register_input" id = "dpwd" type ="password" placeholder="">
         <br>
         <p>Registered via third-party account:</p>
         
       </fieldset>
     </form>
-    <a href="account.html"><button type="submit" class="pure-button pure-button-primary" style="float: right;">SIGN-IN</button></a>
+    <a href="account.html"><button type="submit" class="pure-button pure-button-primary" style="float: right;" onclick="register()">SIGN-IN</button></a>
   </div>
 </body>
 </html>
