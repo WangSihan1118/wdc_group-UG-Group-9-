@@ -8,7 +8,7 @@ Admin:
     ID:2
     password:123456
     
-User:
+Manager:
     ID:1
     password:123456
     

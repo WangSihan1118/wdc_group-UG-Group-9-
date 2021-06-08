@@ -137,7 +137,7 @@ function Admin_ShowPostiveCase(){
             document.getElementById("content").innerHTML = table_content;
         }
     };
-    xhttp.open("GET", "/admins/ShowAllUser", true);
+    xhttp.open("GET", "/admins/ShowPostiveCase", true);
     xhttp.send();
 }
 

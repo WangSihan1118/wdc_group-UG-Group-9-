@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <title>Admin</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="/stylesheets/format.css">
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <script src="/javascripts/vue.js" defer></script>
+        <script src="/javascripts/tool.js" defer></script>
+        <script src="/javascripts/Adminajax.js" defer></script>
+        <script src="/javascripts/Managerajax.js" defer></script>
+        <script src="/javascripts/Userajax.js" defer></script>
+        <script src="/javascripts/help.js" defer></script>
+        <script src="/javascripts/Accountajax.js" defer></script>
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' /> 
+  </head>
+<body>
+  
+  <div id = "login_body">
+    <h2 style="text-align: center;">Create a new account</h2>
+    <hr>
+    <form style="text-align:center ;">
+      <label for="User"><input type="radio" name="AccountType" id = "User" value="User" required="required" >User</label>
+      <label for="Venue_manager"><input type="radio" name="AccountType" id = "Venue_manager" value="Manager">Venue manager</label>
+    </form>
+    <form  class="pure-form pure-form-stacked">
+      <fieldset>
+        <label for="Phone number:">Phone number:</label>
+        <input class = "Register_input" id = "number" type ="text" placeholder="" required="required" >
+
+        <label for="Password:">Password:</label>
+        <input class = "Register_input" id = "pwd" type ="password" placeholder="" required="required" >
+
+        <label for="Confirm Password:">Confirm Password:</label>
+        <input class = "Register_input" id = "dpwd" type ="password" placeholder="" required="required" >
+        <br>
+        <p>Registered via third-party account:</p>
+        
+      </fieldset>
+    </form>
+<button type="submit" class="pure-button pure-button-primary" style="float: right;" onclick="register()">SIGN-IN</button>
+  </div>
+</body>
+</html>

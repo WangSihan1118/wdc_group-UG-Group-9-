@@ -41,13 +41,14 @@ router.post('/login',function(req,res,next){
                 res.sendStatus(500);
                 return;
             }
-            if(rows){
+            if(rows.length == 0){
+                res.send({"result": false});
+            }else{
                 req.session.login = true;
                 req.session.type = login_type;
                 req.session.ID = ID;
-                res.send(true);
-            }else{
-                res.send(false);
+
+                res.send({"result": true});
             }
         });
     });

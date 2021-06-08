@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <title>Admin</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="/stylesheets/format.css">
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <script src="/javascripts/vue.js" defer></script>
+        <script src="/javascripts/tool.js" defer></script>
+        <script src="/javascripts/Adminajax.js" defer></script>
+        <script src="/javascripts/Managerajax.js" defer></script>
+        <script src="/javascripts/Userajax.js" defer></script>
+        <script src="/javascripts/help.js" defer></script>
+        <script src="/javascripts/Accountajax.js" defer></script>
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' /> 
+</head>
+<body>
+  
+  <div id = "login_body">
+    <h2 style="text-align: center;">Check-in</h2>
+    <hr>
+    <div id  = "check_in_area">
+        <div id = "left_checkin_area" style="float: left;">
+            <p>Scan QRcode to check-in:</p>
+            <div id="qrcode" style="text-align: center;"></div>
+            <script>
+                var qrcode = new QRCode('qrcode', {
+                    text: 'https://github.com/davidshimjs/qrcodejs',
+                    width: 200,
+                    height: 200,
+                    colorDark: '#000000',
+                    colorLight: '#ffffff',
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+            </script>
+        </div>
+        <div id = "right_checkin_area" style="float: right;">
+            <form  class="pure-form pure-form-stacked">
+            <fieldset>
+                <label for = "checkin_input">Please input the check-in code:</label>
+                <input class = "checkin_input" type="text" id="checkin_input">                       
+            </fieldset>
+            </form>
+        </div>
+        <div style="clear: both;"></div>   
+    </div>
+    <button type="submit" class="pure-button pure-button-primary" name="button" id="button" style="float: right;" onclick = "checkin()">CHECK-IN</button>
+  </div>
+</body>
+</html>

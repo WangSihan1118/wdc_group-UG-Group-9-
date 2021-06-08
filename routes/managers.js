@@ -10,7 +10,7 @@ module.exports = router;
 
 router.post('/updateManagerInfor',function(req,res,next){
     req.pool.getConnection( function(err,connection) {
-        //var managers_id = req.session.managers_id;
+        var managers_id = req.session.ID;
         var first_name = req.body.first_name;
         var last_name = req.body.last_name;
         var number= req.body.number;
@@ -21,7 +21,7 @@ router.post('/updateManagerInfor',function(req,res,next){
         sql_params.push(last_name);
         sql_params.push(number);
         sql_params.push(Email);
-        //sql_params.push(managers_id);
+        sql_params.push(managers_id);
 
         if (err) {
             res.sendStatus(500);
@@ -40,15 +40,15 @@ router.post('/updateManagerInfor',function(req,res,next){
 });
 
 router.get('/ShowAllVenue',function(req,res,next){
-    /*var managers_id = req.session.managers_id;
+    var managers_id = req.session.ID;
     var sql_params = new Array();
-    sql_params.push(managers_id);*/
+    sql_params.push(managers_id);
     req.pool.getConnection( function(err,connection) {
         if (err) {
             res.sendStatus(500);
             return;
         }
-        var query = "select venue.ID,venue.name,venue.hotspot from venue join manager_venues where manager.ID = ?";
+        var query = "select venue.ID,venue.name,venue.hotspot from venue join manager_venues where manager_id = ?";
         connection.query(query, sql_params,function(err, rows, fields) {
             connection.release(); // release connection
             if (err) {
@@ -61,16 +61,16 @@ router.get('/ShowAllVenue',function(req,res,next){
 });
 
 router.get('/ShowHotSpotVenue',function(req,res,next){
-    /*var managers_id = req.session.managers_id;
+    var managers_id = req.session.ID;
     var sql_params = new Array();
-    sql_params.push(managers_id);*/
+    sql_params.push(managers_id);
     req.pool.getConnection( function(err,connection) {
         if (err) {
             res.sendStatus(500);
             return;
         }
-        var query = "select venue.ID,venue.name,venue.hotspot from venue join manager_venues where hotspot = 1 and manager.ID = ?;";
-        connection.query(query, function(err, rows, fields) {
+        var query = "select venue.ID,venue.name,venue.hotspot from venue join manager_venues where hotspot = 1 and manager_id = ?;";
+        connection.query(query,sql_params, function(err, rows, fields) {
             connection.release(); // release connection
             if (err) {
                 res.sendStatus(500);
@@ -155,7 +155,6 @@ router.post('/createVenue',function(req,res,next){
     }
         
     var sql_params1 = new Array();
-    var manager_id = req.session.manager_id;
     sql_params1.push(Venue_Name); 
     sql_params1.push(Longtitude); 
     sql_params1.push(Latitude); 
@@ -165,7 +164,6 @@ router.post('/createVenue',function(req,res,next){
     sql_params1.push(Suburb); 
     sql_params1.push(Address); 
     sql_params1.push(hotspot);
-    //sql_params2.push(manager_id);
 
         if (err) {
             res.sendStatus(500);
@@ -179,18 +177,18 @@ router.post('/createVenue',function(req,res,next){
             }
         });
         
-        var query2 = "select max(ID) from venue";
+        var query2 = "select max(ID) as ID from venue";
         connection.query(query2,function(err, rows, fields) {
             if (err) {
                 res.sendStatus(500);
                 return;
             }
-            var new_vid = rows.ID;
+            var new_vid = JSON.parse(JSON.stringify(rows))[0].ID;
         });
         
         var sql_params2 = new Array();
-        //var manager_id = req.session.manager_id;
-        //sql_params2.push(manager_id);
+        var manager_id = req.session.ID;
+        sql_params2.push(manager_id);
         sql_params2.push(new_vid);
         var query3 = 'INSERT INTO manager_venues(manager_id,venue_id) VALUES (?,?);';
         connection.query(query3, sql_params2,function(err, rows, fields) {
@@ -248,11 +246,10 @@ router.post('/editVenue',function(req,res,next){
 });
 
 router.post('/ViewCheckInHistory',function(req,res,next){
-    /*var managers_id = req.session.managers_id;
     var sql_params = new Array();
-    sql_params.push(managers_id);*/
+    var manager_id = req.session.ID;
+    sql_params.push(manager_id);
     var v_id = req.body.id;
-    var sql_params = new Array();
     sql_params.push(v_id);
     req.pool.getConnection( function(err,connection) {
         if (err) {

@@ -1,0 +1,199 @@
+const Topmenu = [
+    { title:'Home', url:'/' },
+    { title:'About', url:'/about' },
+    { title:'Contact Us', url:'/contact' }
+];
+
+/*const VerticalMenu = [
+    { title:'(User) Change My Information', method: this.Change_user_information},
+    { title:'(User) View My Trip History', method: this.View_my_history},
+    { title:'(Venue Owner) Manage My Venue', method: this.Manage_my_venue},
+    { title:'(Venue Owner) View Venue Visit History', method: this.View_venue_history},
+    { title:'(Admin) Regsister a New Admin', method: this.Register_new_admin},
+    { title:'(Admin)Manage User', method: this.Manage_user},
+    { title:'(Admin)Manage Venue', method: this.Manage_venue},
+]*/
+
+var vueinst = new Vue({
+    el:"#app",
+    data:{
+        choose:"Choose...",
+        show_ad:true,
+        dark_mode:false,
+        top_menu:Topmenu,
+        c_text:'type your comment here',
+        c_arr:[],
+    },
+    methods:{
+        addComment(){
+            c_arr.push(c_text);
+        }
+
+    }
+});
+
+var AccountManage = new Vue({
+    el:"#manage",
+    data(){
+        return {
+        vmenu : [
+            { title:'(User) Change My Information', ajax:'jump_to_change_my_infor()' },
+            { title:'(User) View My Trip History', ajax:'jump_to_view_my_trip()' },
+            { title:'(Venue Owner) Edit Venue manager information', ajax:'jump_to_Edit_Venue_manager_information()' },
+            { title:'(Venue Owner) Manage My Venue', ajax:'jump_to_Show_my_venue()' },
+            { title:'(Admin) Change Admin Information', ajax:'jump_to_admin_change_my_infor()' },
+            { title:'(Admin) Regsister a New Admin', ajax:'jump_to_RegisterAdmin()' },
+            { title:'(Admin) Manage User', ajax:'jump_to_admin_manage_user()' },
+            { title:'(Admin) Manage Venue', ajax:'jump_to_admin_manage_venue()' },
+        ],
+        };
+    },
+    //暂时忽略methods部分
+    methods:{
+
+        Change_user_information() {
+            alert('Change_user_information!');
+        },
+        View_my_history() {
+            alert('View_my_history!');
+        },
+
+        Manage_my_venue() {
+          alert('Manage_my_venue!');
+        },
+        View_venue_history() {
+          alert('View_venue_history!');
+        },
+        Register_new_admin() {
+          alert('Register_new_admin!');
+        },
+
+        Manage_user() {
+          alert('Manage_user!');
+        },
+        Manage_venue() {
+          alert('Manage_venue!');
+        }
+    }
+});
+
+var User_information = new Vue({
+    el:"#User_Infor",
+    data(){
+        return{
+        user_form:[
+            { title:"First name"},
+            { title:"Last name"},
+            { title:"Phone number"},
+            { title:"Email"},
+            { title:"Home address"},
+        ],
+        };
+    },
+});
+
+var Venue_infor = new Vue({
+    el:"#Venue_infor",
+    data(){
+        return{
+        venue_form:[
+            { title:"Venue Name"},
+            { title:"Manager phone number"},
+            { title:"Longtitude"},
+            { title:"Latitude"},
+            { title:"Country"},
+            { title:"State"},
+            { title:"City"},
+            { title:"Suburb"},
+            { title:"Address"},
+        ],
+        };
+    },
+});
+
+var Admin_infor = new Vue({
+    el:"#admin_infor",
+    data(){
+        return{
+        admin_form:[
+            { title:"Official Name"},
+            { title:"Official Contact Number"},
+            { title:"Official Address"},
+        ],
+        };
+    },
+});
+
+var manage_user = new Vue({
+    el:"#manage_user",
+    data(){
+        return{
+        userList:[
+            { id:"u12345675667",venue_name:"someplace",arrival_time:"23:09 10/5/2021"},
+        ],
+        };
+    },
+});
+
+var manage_venue = new Vue({
+    el:"#manage_venue",
+    data(){
+        return{
+        venueList:[
+            { id:"v1234567",name:"someplace"},
+        ],
+        };
+    },
+});
+
+var userTrip = new Vue({
+    el:"#userTrip",
+    data(){
+        return{
+        userTrip:[
+            { id:"u1234567",venue_name:"someplace",arrival_time:"23:09 10/5/2021"},
+        ],
+        };
+    },
+});
+
+var checkin_history = new Vue({
+    el:"#checkin_history",
+    data(){
+        return{
+        checkinHirstory:[
+            { id:"u1234567",venue_name:"someplace",arrival_time:"23:09 10/5/2021"},
+            { id:"u1234567",venue_name:"someplace",arrival_time:"23:10 10/5/2021"},
+        ],
+        };
+    },
+});
+
+var Manager_Infor = new Vue({
+    el:"#Manager_Infor",
+    data(){
+        return{
+        user_form:[
+            { title:"First name"},
+            { title:"Last name"},
+            { title:"Phone number"},
+            { title:"Email"},
+        ],
+        };
+    },
+});
+
+var Owner_manage_venue = new Vue({
+    el:"#Owner_manage_venue",
+    data(){
+        return{
+        Owener_s_venueList:[
+            { id:"v123456",name:"Someplace"},
+        ],
+        };
+    },
+});
+
+
+
+

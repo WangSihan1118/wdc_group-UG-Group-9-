@@ -11,7 +11,7 @@ module.exports = router;
 //example
 router.post('/updateInfor',function(req,res,next){
     req.pool.getConnection( function(err,connection) {
-        //var user_id = req.session.user_id;
+        var user_id = req.session.ID;
         var first_name = req.body.first_name;
         var last_name = req.body.last_name;
         var number= req.body.number;
@@ -32,7 +32,7 @@ router.post('/updateInfor',function(req,res,next){
         sql_params.push(Email);
         sql_params.push(address);
         sql_params.push(health);
-        //sql_params.push(user_id);
+        sql_params.push(user_id);
 
         if (err) {
             res.sendStatus(500);
@@ -52,9 +52,9 @@ router.post('/updateInfor',function(req,res,next){
 
 
 router.get('/getTrips',function(req,res,next){
-    /*var sql_params = new Array();
-    var user_id = req.session.user_id;
-    sql_params.push(user_id);*/
+    var sql_params = new Array();
+    var user_id = req.session.ID;
+    sql_params.push(user_id);
     req.pool.getConnection( function(err,connection) {
         if (err) {
             res.sendStatus(500);
@@ -73,16 +73,16 @@ router.get('/getTrips',function(req,res,next){
 });
 
 router.get('/getHotspots',function(req,res,next){
-    /*var sql_params = new Array();
-    var user_id = req.session.user_id;
-    sql_params.push(user_id);*/
+    var sql_params = new Array();
+    var user_id = req.session.ID;
+    sql_params.push(user_id);
     req.pool.getConnection( function(err,connection) {
         if (err) {
             res.sendStatus(500);
             return;
         }
         var query = "select user.ID,user.health,venue.name,venue.hotspot,trip.arrival_time from user join trip join venue where venue.hotspot = 1 and user.id = ?;";
-        connection.query(query, function(err, sql_params,rows, fields) {
+        connection.query(query, sql_params,function(err,rows, fields) {
             connection.release(); // release connection
             if (err) {
                 res.sendStatus(500);

@@ -10,7 +10,7 @@ module.exports = router;
 
 router.post('/updateAdminInfor',function(req,res,next){
     req.pool.getConnection( function(err,connection) {
-        //var admin_id = req.session.admin_id;
+        var admin_id = req.session.ID;
         var name = req.body.name;
         var number= req.body.number;
         var address= req.body.address;
@@ -21,7 +21,7 @@ router.post('/updateAdminInfor',function(req,res,next){
         sql_params.push(name);
         sql_params.push(number);
         sql_params.push(address);
-        //sql_params.push(admin_id);
+        sql_params.push(admin_id);
 
         if (err) {
             res.sendStatus(500);
@@ -41,7 +41,7 @@ router.post('/updateAdminInfor',function(req,res,next){
 
 router.post('/updateAdminInfor',function(req,res,next){
     req.pool.getConnection( function(err,connection) {
-        //var admin_id = req.session.admin_id;
+        var admin_id = req.session.ID;
         var name = req.body.name;
         var number= req.body.number;
         var address= req.body.address;
@@ -52,7 +52,7 @@ router.post('/updateAdminInfor',function(req,res,next){
         sql_params.push(name);
         sql_params.push(number);
         sql_params.push(address);
-        //sql_params.push(admin_id);
+        sql_params.push(admin_id);
 
         if (err) {
             res.sendStatus(500);
@@ -72,7 +72,7 @@ router.post('/updateAdminInfor',function(req,res,next){
 
 router.post('/signinAdmin',function(req,res,next){
     req.pool.getConnection( function(err,connection) {
-        //var admin_id = req.session.admin_id;
+        var admin_id = req.session.ID;
         var number= req.body.number;
         var address= req.body.pwd;
 
@@ -81,7 +81,7 @@ router.post('/signinAdmin',function(req,res,next){
         var sql_params = new Array();
         sql_params.push(number);
         sql_params.push(address);
-        //sql_params.push(admin_id);
+        sql_params.push(admin_id);
 
         if (err) {
             res.sendStatus(500);
@@ -109,9 +109,6 @@ router.post('/signinAdmin',function(req,res,next){
 });
 
 router.get('/ShowAllUser',function(req,res,next){
-    /*var sql_params = new Array();
-    var user_id = req.session.user_id;
-    sql_params.push(user_id);*/
     req.pool.getConnection( function(err,connection) {
         if (err) {
             res.sendStatus(500);
@@ -130,15 +127,12 @@ router.get('/ShowAllUser',function(req,res,next){
 });
 
 router.get('/ShowPostiveCase',function(req,res,next){
-    /*var sql_params = new Array();
-    var user_id = req.session.user_id;
-    sql_params.push(user_id);*/
     req.pool.getConnection( function(err,connection) {
         if (err) {
             res.sendStatus(500);
             return;
         }
-        var query = "select user.ID,user.health,venue.name,venue.hotspot,trip.arrival_time from user join trip join venue where venue.hotspot = 1;";
+        var query = "select user.ID,user.health,venue.name,venue.hotspot,trip.arrival_time from user join trip join venue where user.health = 1;";
         connection.query(query, function(err, rows, fields) {
             connection.release(); // release connection
             if (err) {
@@ -188,7 +182,6 @@ router.get('/Jumpto_Admin_update_user',function(req,res,next){
 
 router.post('/updateUserInfor',function(req,res,next){
     req.pool.getConnection( function(err,connection) {
-        //var user_id = req.session.user_id;
         var first_name = req.body.first_name;
         var last_name = req.body.last_name;
         var number= req.body.number;
@@ -265,9 +258,6 @@ router.get('/ShowHotSpotVenue',function(req,res,next){
 });
 
 router.post('/ViewCheckInHistory',function(req,res,next){
-    /*var managers_id = req.session.managers_id;
-    var sql_params = new Array();
-    sql_params.push(managers_id);*/
     var v_id = req.body.id;
     var sql_params = new Array();
     sql_params.push(v_id);
