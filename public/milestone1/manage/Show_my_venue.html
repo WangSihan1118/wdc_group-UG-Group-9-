@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>   
-        <title>Admin</title>
+        <title>Manage my venue</title>
 
         <meta charset="UTF-8">
         <link rel="stylesheet" href="../format.css">
@@ -9,28 +9,36 @@
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
         <script src="../vue.js" defer></script>
         <script src="../tool.js" defer></script>
+        <script src="/javascripts/Managerajax.js" defer></script>
         <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
         <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />       
     </head>
 
     <body>
         <div id = "Owner_manage_venue">
-            <p>Owner manage venue</p>
-            <input></input>
-            <button>search</button>
-            <a href = "CreateVenue.html"><button>Create a new Venue</button></a>
-            <table class="pure-table">
-                <th>Venue id</th>
-                <th>Venue name</th>
-                <th>Manage</th>
-                <th>View check-in history</th>
-                <tr v-for ="venue in Owener_s_venueList">
-                    <td>{{venue.id}}</td>
-                    <td>{{venue.name}}</td>
-                    <td><a href = "manage_venue.html">Edit venue</a></td>
-                    <td><a href = "view_venue_history.html">View check-in history of venue</a></td>
-                </tr>
-            <table>
-            </div>
+            <p>Manage my venue</p>
+            <button class="pure-button" type = "button" onclick = "Manager_ShowAllVenue()">Show all venue</button>
+            <button class="pure-button" type = "button" onclick = "Manager_ShowHotSpotVenue()">Show hotspot venue</button>
+            <button class="pure-button" type = "button" onclick = "Manager_jumpto_Venue_CreateNew()">Create a new Venue</button>
+            <hr>
+            
+            <form class="pure-form">
+                <fieldset>
+                    <input type="text" id = "vid_input" class = "ID_input" width = "80%" placeholder=" Please input the Venue ID your want to manage first">
+                    <button class="pure-button" onclick = "Manager_ViewCheckInHistory()" type = "button">View the trip history of venue</button>
+                    <button class="pure-button" onclick = "Manager_jumpto_Venue_edit()" type = "button">Edit the venue</button>
+                </fieldset>
+            </form>
+                
+            <div id = "content">
+                <table class="pure-table">
+                    <tbody id = "venue_table">
+                    <th>Venue id</th>
+                    <th>Venue name</th>
+                    <th>Venue Status</th>
+                    </tbody>
+                </table>
+            <div>
+        </div>
     </body>
 </html>

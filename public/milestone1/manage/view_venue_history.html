@@ -9,25 +9,36 @@
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
         <script src="../vue.js" defer></script>
         <script src="../tool.js" defer></script>
+        <script src="/javascripts/Adminajax.js" defer></script>
         <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
         <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />       
     </head>
 
     <body>
-        <div id = "checkin_history">
-            <p>view venue's check-in history</p>
-            <input></input>
-            <button>search</button>
-            <table class="pure-table">
-                <th>User ID</th>
-                <th>Venue name</th>
-                <th>Arrival time</th>
-                <tr v-for ="user in checkinHirstory">
-                    <td>{{user.id}}</td>
-                    <td>{{user.venue_name}}</td>
-                    <td>{{user.arrival_time}}</td>
-                </tr>
-            <table>
+        <div id = "manage_user">
+            <p>manage users</p>
+            <button class="pure-button" type = "button" onclick = "Admin_ShowAllUser()">Show all users' trips</button>
+            <button class="pure-button" type = "button" onclick = "Admin_ShowPostiveCase()">Show postive cases' trips</button>
+            <hr>
+            
+            <form class="pure-form">
+                <fieldset>
+                    <input type="text" id = "uid_input" class = "ID_input" width = "80%" placeholder=" Please input the Venue ID your want to manage first">
+                    <button class="pure-button" type = "button" onclick = "Jumpto_Admin_update_user()">Edit the User</button>
+                </fieldset>
+            </form>
+            
+            <div id = "content">
+                <table class="pure-table">
+                    <tbody id = "trip_table">
+                        <th>User ID</th>
+                        <th>Health Situation</th>
+                        <th>Venue name</th>
+                        <th>Venue status</th>
+                        <th>Arrival time</th>
+                    </tbody>
+                <table>
+            </div>
         </div>
     </body>
 </html>

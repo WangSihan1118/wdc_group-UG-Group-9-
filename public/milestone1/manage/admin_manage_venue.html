@@ -9,27 +9,35 @@
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
         <script src="../vue.js" defer></script>
         <script src="../tool.js" defer></script>
+        <script src="/javascripts/Adminajax.js" defer></script>
         <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
         <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />       
     </head>
 
     <body>
-        <div id = "manage_venue">
-        <p>admin manage vue</p>
-        <input></input>
-        <button>search</button>
-        <table class="pure-table">
-            <th>Venue id</th>
-            <th>Venue name</th>
-            <th>Manage</th>
-            <th>View check-in history</th>
-            <tr v-for ="venue in venueList">
-                <td>{{venue.id}}</td>
-                <td>{{venue.name}}</td>
-                <td><a href = "manage_venue.html">Edit venue</a></td>
-                <td><a href = "view_venue_history.html">View check-in history of venue</a></td>
-            </tr>
-        <table>
+        <div id = "Owner_manage_venue">
+            <p>Manage my venue</p>
+            <button class="pure-button" type = "button" onclick = "Admin_ShowAllVenue()">Show all venue</button>
+            <button class="pure-button" type = "button" onclick = "Admin_ShowHotSpotVenue()">Show hotspot venue</button>
+            <hr>
+            
+            <form class="pure-form">
+                <fieldset>
+                    <input type="text" id = "vid_input" class = "ID_input" width = "80%" placeholder=" Please input the Venue ID your want to manage first">
+                    <button class="pure-button" onclick = "Admin_ViewCheckInHistory()" type = "button">View the trip history of venue</button>
+                    <button class="pure-button" onclick = "Admin_jumpto_Venue_edit()" type = "button">Edit the venue</button>
+                </fieldset>
+            </form>
+                
+            <div id = "content">
+                <table class="pure-table">
+                    <tbody id = "venue_table">
+                    <th>Venue id</th>
+                    <th>Venue name</th>
+                    <th>Venue Status</th>
+                    </tbody>
+                </table>
+            <div>
         </div>
     </body>
 </html>

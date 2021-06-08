@@ -82,11 +82,11 @@ var User_information = new Vue({
     data(){
         return{
         user_form:[
-            { title:"First name"},
-            { title:"Last name"},
-            { title:"Phone number"},
-            { title:"Email"},
-            { title:"Home address"},
+            { title:"First name:"},
+            { title:"Last name:"},
+            { title:"Phone number:"},
+            { title:"Email:"},
+            { title:"Home adress:"},
         ],
         };
     },
@@ -97,15 +97,15 @@ var Venue_infor = new Vue({
     data(){
         return{
         venue_form:[
-            { title:"Venue Name"},
-            { title:"Manager phone number"},
-            { title:"Longtitude"},
-            { title:"Latitude"},
-            { title:"Country"},
-            { title:"State"},
-            { title:"City"},
-            { title:"Suburb"},
-            { title:"Address"},
+            { title:"Venue Name:"},
+            { title:"Manager phone number:"},
+            { title:"Longtitude:"},
+            { title:"Latitude:"},
+            { title:"Country:"},
+            { title:"State:"},
+            { title:"City:"},
+            { title:"Suburb:"},
+            { title:"Address:"},
         ],
         };
     },
@@ -116,9 +116,10 @@ var Admin_infor = new Vue({
     data(){
         return{
         admin_form:[
-            { title:"Official Name"},
-            { title:"Official Contact Number"},
-            { title:"Official Address"},
+            { title:"Official Name:"},
+            { title:"Official Contact Number:"},
+            { title:"Official Email Address:"},
+            { title:"Official Address:"},
         ],
         };
     },
@@ -174,10 +175,11 @@ var Manager_Infor = new Vue({
     data(){
         return{
         user_form:[
-            { title:"First name"},
-            { title:"Last name"},
-            { title:"Phone number"},
-            { title:"Email"},
+            { title:"First name:"},
+            { title:"Last name:"},
+            { title:"Phone number:"},
+            { title:"Email:"},
+            { title:"Home adress:"},
         ],
         };
     },
@@ -193,7 +195,5 @@ var Owner_manage_venue = new Vue({
         };
     },
 });
-
-
 
 

@@ -53,8 +53,11 @@ DROP TABLE IF EXISTS `manager`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `manager` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `password` varchar(256) DEFAULT NULL,
+  `first_name` varchar(45) DEFAULT NULL,
+  `last_name` varchar(45) DEFAULT NULL,
+  `phone_number` varchar(45) DEFAULT NULL,
   `email` varchar(256) DEFAULT NULL,
+  `password` varchar(256) DEFAULT NULL,
   `token1` varchar(256) DEFAULT NULL,
   `token2` varchar(256) DEFAULT NULL,
   `token3` varchar(256) DEFAULT NULL,
@@ -68,7 +71,7 @@ CREATE TABLE `manager` (
 
 LOCK TABLES `manager` WRITE;
 /*!40000 ALTER TABLE `manager` DISABLE KEYS */;
-INSERT INTO `manager` VALUES (1,'123456','a@gmail.com',NULL,NULL,NULL);
+INSERT INTO `manager` VALUES (1,NULL,NULL,NULL,'a@gmail.com','123456',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `manager` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -145,6 +148,7 @@ CREATE TABLE `user` (
   `first_name` varchar(256) DEFAULT NULL,
   `last_name` varchar(256) DEFAULT NULL,
   `phone_number` varchar(256) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
   `address1` varchar(256) DEFAULT NULL,
   `address2` varchar(256) DEFAULT NULL,
   `token1` varchar(256) DEFAULT NULL,
@@ -160,7 +164,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'123456',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `user` VALUES (1,'123456',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -196,6 +200,10 @@ LOCK TABLES `venue` WRITE;
 INSERT INTO `venue` VALUES (1,-34.92610168457031,138.59988403320312,NULL,NULL,NULL,NULL,NULL,'Adelaide',NULL,1);
 /*!40000 ALTER TABLE `venue` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'covid'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -206,4 +214,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-02 10:28:45
+-- Dump completed on 2021-06-07 14:08:14

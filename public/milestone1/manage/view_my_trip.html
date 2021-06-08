@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>   
-        <title>Admin</title>
+        <title>My trips</title>
 
         <meta charset="UTF-8">
         <link rel="stylesheet" href="../format.css">
@@ -9,6 +9,8 @@
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
         <script src="../vue.js" defer></script>
         <script src="../tool.js" defer></script>
+        <script src="/javascripts/Userajax.js" defer></script>
+        <script src="/javascripts/Managerajax.js" defer></script>
         <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
         <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />       
     </head>
@@ -16,17 +18,17 @@
     <body>
         <div id = "userTrip">
             <p>view my trip</p>
-            <input></input>
-            <button>search</button>
+            <button class="pure-button" type = "button" onclick = "User_getAllTripHistory()">Show all trips</button>
+            <button class="pure-button" type = "button" onclick = "User_getHotSpot()">Show hotspot trips</button>
+            <hr>
             <table class="pure-table">
-                <th>User ID</th>
-                <th>Venue name</th>
-                <th>Arrival time</th>
-                <tr v-for ="user in userTrip">
-                    <td>{{user.id}}</td>
-                    <td>{{user.venue_name}}</td>
-                    <td>{{user.arrival_time}}</td>
-                </tr>
+                <tbody id = "trip_table">
+                    <th>User ID</th>
+                    <th>Health Situation</th>
+                    <th>Venue name</th>
+                    <th>Venue status</th>
+                    <th>Arrival time</th>
+                </tbody>
             <table>
         </div>
 

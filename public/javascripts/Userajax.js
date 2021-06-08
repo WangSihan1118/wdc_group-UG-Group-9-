@@ -9,7 +9,7 @@ function User_updateInfor() {
 
 
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "/user/updateInfor", true);
+    xhttp.open("POST", "/users/updateInfor", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify({ 
         first_name: first_name, 
@@ -22,11 +22,13 @@ function User_updateInfor() {
 }
 
 //view_my_trip.html
-function User_getTripHIstory(){
+function User_getAllTripHistory(){
     var table_content = 
         `<th>User ID</th>
-        <th>Venue name</th>
-        <th>Arrival time</th>`;
+         <th>Health Situation</th>
+         <th>Venue name</th>
+         <th>Venue status</th>
+         <th>Arrival time</th>`;
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -35,14 +37,28 @@ function User_getTripHIstory(){
             var infor_collection = JSON.parse(this.responseText);
             //console.log(infor_collection);
             for(x in infor_collection){
-                var userID = infor_collection[x].userID;
-                var venue_name = infor_collection[x].venue_name;
+                var userID = infor_collection[x].ID;
+                var venue_name = infor_collection[x].name;
                 var arrival_time = infor_collection[x].arrival_time;
+                var health = infor_collection[x].health;
+                if(health == 1){
+                    health = "Postive";
+                }else{
+                    health = "Negative";
+                }
+                var hotspot = infor_collection[x].hotspot;
+                if(hotspot == 1){
+                    hotspot = "Hotspot";
+                }else{
+                    hotspot = "Not hotspot";
+                }
                 table_content = table_content+
                 `
                 <tr>
                 <td>${userID}</td>
+                <td>${health}</td>
                 <td>${venue_name}</td>
+                <td>${hotspot}</td>
                 <td>${arrival_time}</td>
                 </tr>
                 `;
@@ -50,6 +66,54 @@ function User_getTripHIstory(){
             document.getElementById("trip_table").innerHTML = table_content;
         }
     };
-    xhttp.open("GET", "user/getTrips", true);
+    xhttp.open("GET", "/users/getTrips", true);
+    xhttp.send();
+}
+
+function User_getHotSpot(){
+    var table_content = 
+        `<th>User ID</th>
+         <th>Health Situation</th>
+         <th>Venue name</th>
+         <th>Venue status</th>
+         <th>Arrival time</th>`;
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            /*document.getElementById("output").innerText = this.responseText;*/
+            var infor_collection = JSON.parse(this.responseText);
+            //console.log(infor_collection);
+            for(x in infor_collection){
+                var userID = infor_collection[x].ID;
+                var venue_name = infor_collection[x].name;
+                var arrival_time = infor_collection[x].arrival_time;
+                var health = infor_collection[x].health;
+                if(health == 1){
+                    health = "Postive";
+                }else{
+                    health = "Negative";
+                }
+                var hotspot = infor_collection[x].hotspot;
+                if(hotspot == 1){
+                    hotspot = "Hotspot";
+                }else{
+                    hotspot = "Not hotspot";
+                }
+                table_content = table_content+
+                `
+                <tr>
+                <td>${userID}</td>
+                <td>${health}</td>
+                <td>${venue_name}</td>
+                <td>${hotspot}</td>
+                <td>${arrival_time}</td>
+                </tr>
+                `;
+            }
+            document.getElementById("trip_table").innerHTML = table_content;
+        }
+    };
+    xhttp.open("GET", "/users/getHotspots", true);
     xhttp.send();
 }
