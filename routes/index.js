@@ -55,31 +55,53 @@ router.post('/login',function(req,res,next){
 router.post('/register',function(req,res,next){
     req.pool.getConnection( function(err,connection) {
         //var user_id = req.session.user_id;
-        var ID = req.body.number;
+        var number = req.body.number;
         var pwd = req.body.pwd;
         var r_type= req.body.r_type;
-
+        var query;
+        if(r_type == "User"){
+            r_type = "user";
+            query = "INSERT INTO user (password,phone_number) VALUES (?,?);";
+        }else if(r_type == "Manager"){
+            r_type = "manager";
+            query = "INSERT INTO manager (password,phone_number) VALUES (?,?);";
+        }
         var sql_params = new Array();
-        sql_params.push(first_name);
-        sql_params.push(last_name);
+        sql_params.push(pwd);
         sql_params.push(number);
-        sql_params.push(Email);
-        sql_params.push(address);
-        sql_params.push(health);
         //sql_params.push(user_id);
 
         if (err) {
+            console.log(err+"1");
             res.sendStatus(500);
             return;
         }
-        var query = "UPDATE user SET first_name= ?, last_name = ?,phone_number = ?, email = ?,address = ?, health = ? where ID = ?";
         connection.query(query, sql_params,function(err, rows, fields) {
-            connection.release(); // release connection
             if (err) {
+                console.log(err+"2");
                 res.sendStatus(500);
                 return;
             }
-            res.json(rows);
+        });
+        var query2;
+        if(r_type == "user"){
+            query2 = "select max(ID) as ID from user";
+        }else if(r_type == "manager"){
+            query2 = "select max(ID) as ID from manager";
+        }
+        connection.query(query2,function(err, rows, fields) {
+            connection.release(); // release connection
+            if (err) {
+                console.log(err+"3");
+                res.sendStatus(500);
+                return;
+            }
+            console.log(rows);
+            rows = JSON.stringify(rows);
+            console.log(rows);
+            var new_aid = rows[0].ID;
+            console.log(new_aid);
+            res.send(rows);
         });
     });
 });

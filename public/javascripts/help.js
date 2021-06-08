@@ -36,7 +36,7 @@ function login(){
 }
 
 function register(){
-    var number = document.getElementById("Number").value;
+    var number = document.getElementById("number").value;
     var pwd = document.getElementById("pwd").value;
     var dpwd = document.getElementById("dpwd").value;
     var r_type = getCheckedValue("AccountType");
@@ -49,12 +49,12 @@ function register(){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            if(this.responseText){
-                var a_id = this.responseText;
+            if(JSON.parse(this.responseText)){
+                var a_id = JSON.parse(this.responseText)[0].ID;
                 alert("Your ID is " + a_id);
                 window.location.href="login.html";
             }else{
-                alter("Failed");
+                alert("Failed");
             }
             return;
         }

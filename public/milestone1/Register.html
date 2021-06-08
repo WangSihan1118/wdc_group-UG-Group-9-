@@ -14,24 +14,25 @@
     <h2 style="text-align: center;">Create a new account</h2>
     <hr>
     <form style="text-align:center ;">
-      <label for="User"><input type="radio" name="AccountType" id = "User" value="User">User</label>
-      <label for="Venue_manager"><input type="radio" name="AccountType" id = "Venue_manager" value="Venue_manager">Venue manager</label>
+      <label for="User"><input type="radio" name="AccountType" id = "User" value="User" required="required" >User</label>
+      <label for="Venue_manager"><input type="radio" name="AccountType" id = "Venue_manager" value="Manager">Venue manager</label>
     </form>
     <form  class="pure-form pure-form-stacked">
       <fieldset>
         <label for="Phone number:">Phone number:</label>
-        <input class = "Register_input" id = "number" type ="text" placeholder="">
+        <input class = "Register_input" id = "number" type ="text" placeholder="" required="required" >
 
         <label for="Password:">Password:</label>
-        <input class = "Register_input" id = "pwd" type ="password" placeholder="">
+        <input class = "Register_input" id = "pwd" type ="password" placeholder="" required="required" >
 
         <label for="Confirm Password:">Confirm Password:</label>
-        <input class = "Register_input" id = "dpwd" type ="password" placeholder="">
+        <input class = "Register_input" id = "dpwd" type ="password" placeholder="" required="required" >
         <br>
         <p>Registered via third-party account:</p>
         
       </fieldset>
     </form>
+    <button type="submit" class="pure-button" style="float: right;" onclick="register()">SIGN-IN</button>
     <a href="account.html"><button type="submit" class="pure-button pure-button-primary" style="float: right;" onclick="register()">SIGN-IN</button></a>
   </div>
 </body>
