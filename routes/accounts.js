@@ -14,19 +14,35 @@ router.get('/jump_to_change_my_infor',function(req,res,next){
             <div id="User_Infor">
         <form class="pure-form pure-form-stacked">
             <fieldset>
-                <div><label for="First name">First name:</label> <input id="First name" type="text" placeholder="">
+                <div>
+                    <label for="First name">First name:</label> <input id="First name" type="text" placeholder="">
                 </div>
-                <div><label for="Last name">Last name:</label> <input id="Last name" type="text" placeholder=""></div>
-                <div><label for="Phone number">Phone number:</label> <input id="Phone number" type="text"
-                        placeholder=""></div>
-                <div><label for="Email">Email:</label> <input id="Email" type="text" placeholder=""></div>
-                <div><label for="Home address">Home address:</label> <input id="Home address" type="text"
-                        placeholder=""></div> <label for="state of health">State of Health</label> <select
-                    id="state of health">
+                
+                <div>
+                <label for="Last name">Last name:</label> <input id="Last name" type="text" placeholder="">
+                </div>
+                
+                <div>
+                    <label for="Phone number">Phone number:</label> <input id="Phone number" type="text" placeholder="">
+                </div>
+                <div>
+                    <label for="Email">Email:</label> <input id="Email" type="text" placeholder="">
+                </div>
+                <div>
+                    <label for="Third party account">Link Third Party Account:</label>
+                  <i class='fab fa-instagram' style='font-size:36px'></i>
+                  <i class='fab fa-google' style='font-size:36px'></i>
+                  <i class='fab fa-facebook-square' style='font-size:36px'></i>
+                <div>
+                    <label for="Home address">Home address:</label> 
+                    <input id="Home address" type="text" placeholder="">
+                </div> 
+                <label for="state of health">State of Health</label> 
+                <select id="state of health">
                     <option value="postive">postive</option>
                     <option value="negative" selected="selected">negative</option>
-                </select> <button type="submit" onclick="User_updateInfor()"
-                    class="pure-button pure-button-primary">Confirm</button>
+                </select> 
+                <button type="submit" onclick="User_updateInfor()" class="pure-button pure-button-primary">Confirm</button>
             </fieldset>
         </form>
     </div>
