@@ -1,60 +1,96 @@
-//User
-function Jumpto_UserUpdateInfor(){
+function jump_to_change_my_infor(){
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "/accounts/UserUpdateInfor", true);
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("content_area").innerHTML = this.responseText;
+            return;
+        }
+    };
+    xhttp.open("GET", "/accounts/jump_to_change_my_infor", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send();
 }
-
-function Jumpto_UserViewTrip(){
+function jump_to_view_my_trip(){
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "/accounts/UserViewTrip", true);
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("content_area").innerHTML = this.responseText;
+            return;
+        }
+    };
+    xhttp.open("GET", "/accounts/jump_to_view_my_trip", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send();
 }
-
-//Manager
-function Jumpto_ManagerUpdateInfor(){
+function jump_to_Edit_Venue_manager_information(){
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "/accounts/ManagerUpdateInfor", true);
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("content_area").innerHTML = this.responseText;
+            return;
+        }
+    };
+    xhttp.open("GET", "/accounts/jump_to_Edit_Venue_manager_information", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send();
 }
-
-function Jumpto_ManagerUpdateVenue(){
+function jump_to_Show_my_venue(){
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "/accounts/ManagerUpdateVenue", true);
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("content_area").innerHTML = this.responseText;
+            return;
+        }
+    };
+    xhttp.open("GET", "/accounts/jump_to_Show_my_venue", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send();
 }
-
-//Admin
-function Jumpto_AdminUpdateInfor(){
+function jump_to_admin_change_my_infor(){
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "/accounts/AdminUpdateInfor", true);
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("content_area").innerHTML = this.responseText;
+            return;
+        }
+    };
+    xhttp.open("GET", "/accounts/jump_to_admin_change_my_infor", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send();
 }
-
-function Jumpto_AdminRegister(){
+function jump_to_RegisterAdmin(){
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "/accounts/AdminRegister", true);
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("content_area").innerHTML = this.responseText;
+            return;
+        }
+    };
+    xhttp.open("GET", "/accounts/jump_to_RegisterAdmin", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send();
 }
-
-function Jumpto_AdminManageUser(){
+function jump_to_admin_manage_user(){
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "/accounts/AdminManageUser", true);
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("content_area").innerHTML = this.responseText;
+            return;
+        }
+    };
+    xhttp.open("GET", "/accounts/jump_to_admin_manage_user", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send();
 }
-
-function Jumpto_AdminManageVenue(){
+function jump_to_admin_manage_venue(){
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "/user/AdminManageVenue", true);
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("content_area").innerHTML = this.responseText;
+            return;
+        }
+    };
+    xhttp.open("GET", "/accounts/jump_to_admin_manage_venue", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send();
 }
-
-

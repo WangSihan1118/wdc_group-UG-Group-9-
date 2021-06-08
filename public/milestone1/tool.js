@@ -37,14 +37,14 @@ var AccountManage = new Vue({
     data(){
         return {
         vmenu : [
-            { title:'(User) Change My Information', url:'./manage/change_my_infor.html' },
-            { title:'(User) View My Trip History', url:'./manage/view_my_trip.html' },
-            { title:'(Venue Owner) Edit Venue manager information', url:'./manage/Edit_Venue_manager_information.html' },
-            { title:'(Venue Owner) Manage My Venue', url:'./manage/Show_my_venue.html' },
-            { title:'(Admin) Change Admin Information', url:'./manage/admin_change_my_infor.html' },
-            { title:'(Admin) Regsister a New Admin', url:'./manage/RegisterAdmin.html' },
-            { title:'(Admin) Manage User', url:'./manage/admin_manage_user.html' },
-            { title:'(Admin) Manage Venue', url:'./manage/admin_manage_venue.html' },
+            { title:'(User) Change My Information', ajax:'jump_to_change_my_infor()' },
+            { title:'(User) View My Trip History', ajax:'jump_to_view_my_trip()' },
+            { title:'(Venue Owner) Edit Venue manager information', ajax:'jump_to_Edit_Venue_manager_information()' },
+            { title:'(Venue Owner) Manage My Venue', ajax:'jump_to_Show_my_venue()' },
+            { title:'(Admin) Change Admin Information', ajax:'jump_to_admin_change_my_infor()' },
+            { title:'(Admin) Regsister a New Admin', ajax:'jump_to_RegisterAdmin()' },
+            { title:'(Admin) Manage User', ajax:'jump_to_admin_manage_user()' },
+            { title:'(Admin) Manage Venue', ajax:'jump_to_admin_manage_venue()' },
         ],
         };
     },

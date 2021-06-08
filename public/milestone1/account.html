@@ -9,6 +9,11 @@
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
         <script src="vue.js" defer></script>
         <script src="tool.js" defer></script>
+        <script src="/javascripts/Adminajax.js" defer></script>
+        <script src="/javascripts/Managerajax.js" defer></script>
+        <script src="/javascripts/Userajax.js" defer></script>
+        <script src="/javascripts/help.js" defer></script>
+        <script src="/javascripts/Accountajax.js" defer></script>
         <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
         <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />       
     </head>
@@ -29,12 +34,12 @@
                 <div id = "function_area">
                     <nav class="pure-menu">
                         <ul id="topmenu" v-for="item in vmenu" class="pure-menu-list">
-                            <li class="pure-menu-item"><a v-bind:href= "item.url" class="pure-menu-link" style="color:black;">{{item.title}}</a></li>
+                            <li class="pure-menu-item"><a href = "javascript:void(0);" v-bind:onclick= "item.ajax" class="pure-menu-link" style="color:black;">{{item.title}}</a></li>
                         </ul>
                     </nav>
                 </div>
             
-                <div id = "context_area">
+                <div id = "content_area">
                     
                 </div>
                 <div style="clear: both;"></div>

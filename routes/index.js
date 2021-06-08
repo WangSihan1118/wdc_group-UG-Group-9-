@@ -105,9 +105,6 @@ router.post('/checkin',function(req,res,next){
         var venue_id= req.body.ck;
         var t = new Date().toISOString().slice(0, 19).replace('T', ' ');
         
-        console.log(req.session.ID);
-        console.log(venue_id);
-        console.log(t);
         
         var sql_params = new Array();
         sql_params.push(t);
@@ -115,7 +112,6 @@ router.post('/checkin',function(req,res,next){
         sql_params.push(user_id);
 
         if (err) {
-            console.log(err+"1");
             res.sendStatus(500);
             return;
         }
@@ -123,7 +119,6 @@ router.post('/checkin',function(req,res,next){
         connection.query(query, sql_params,function(err, rows, fields) {
             connection.release(); // release connection
             if (err) {
-                console.log(err+"2");
                 res.sendStatus(500);
                 return;
             }
