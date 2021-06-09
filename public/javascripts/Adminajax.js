@@ -1,3 +1,40 @@
+function Admin_getAdminInfor(){
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var infor = JSON.parse(this.responseText);
+            document.getElementById("Official Name").value = infor[0].name;
+            document.getElementById("Official Contact Number").value = infor[0].contact_number;
+            document.getElementById("Official Address").value = infor[0].address;
+            return;
+        }
+    };
+    xhttp.open("GET", "/admins/getAdminInfor", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send();
+}
+
+function Admin_getUserInfor(){
+    var uid = document.getElementById("uid_input").value;
+    var xhttp = new XMLHttpRequest();    
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var infor = JSON.parse(this.responseText);
+            document.getElementById("First name").value = infor[0].first_name;
+            document.getElementById("Last name").value = infor[0].last_name;
+            document.getElementById("Phone number").value = infor[0].phone_number;
+            document.getElementById("Email").value = infor[0].email;
+            document.getElementById("Home address").value = infor[0].address1;
+            return;
+        }
+    };
+    xhttp.open("POST", "/admins/getUserInfor", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send(JSON.stringify({
+        u_id:uid
+    }));
+}
+
 //admin_change_my_infor.html
 function Admin_updateAdminInfor() {
     var name = document.getElementById("Official Name").value;
@@ -27,12 +64,12 @@ function Admin_signinAdmin() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            var a_id = this.responseText;
-            alert(a_id);
+            var a_id = JSON.parse(this.responseText)[0].ID;
+            alert("New admin ID is "+a_id);
             return;
         }
     };
-    xhttp.open("POST", "/admins/updateUserInfor", true);
+    xhttp.open("POST", "/admins/signinAdmin", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify({ 
         number:number,
@@ -147,6 +184,7 @@ function Jumpto_Admin_update_user(){
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("content").innerHTML = this.responseText;
+            Admin_getUserInfor();
             return;
         }
     };
@@ -337,11 +375,36 @@ function Admin_jumpto_Venue_edit(){
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("content").innerHTML = this.responseText;
+            Admin_getVenueInfor();
             return;
         }
     };
     xhttp.open("GET", "/admins/jumpto_Venue_edit", true);
     xhttp.send();
+}
+
+function Admin_getVenueInfor(){
+    var v_id = document.getElementById("vid_input").value;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var infor = JSON.parse(this.responseText);
+            document.getElementById("Venue Name").value =infor[0].name;
+            document.getElementById("Longtitude").value =infor[0].longtitude;
+            document.getElementById("Latitude").value =infor[0].latitude;
+            document.getElementById("Country").value =infor[0].country;
+            document.getElementById("State").value =infor[0].state;
+            document.getElementById("City").value =infor[0].city;
+            document.getElementById("Suburb").value =infor[0].suburb;
+            document.getElementById("Address").value =infor[0].detailed_address;
+            return;
+        }
+    };
+    xhttp.open("POST", "/admins/getVenueInfor", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send(JSON.stringify({
+        v_id:v_id
+    }));
 }
 
 function Admin_editVenue(){

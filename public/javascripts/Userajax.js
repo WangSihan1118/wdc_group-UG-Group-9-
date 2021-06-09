@@ -1,3 +1,20 @@
+function User_getUserInfor(){
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "/users/getUserInfor", true);
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var infor = JSON.parse(this.responseText);
+            document.getElementById("First name").value = infor[0].first_name;
+            document.getElementById("Last name").value = infor[0].last_name;
+            document.getElementById("Phone number").value = infor[0].phone_number;
+            document.getElementById("Email").value = infor[0].email;
+            document.getElementById("Home address").value = infor[0].address1;
+            return;
+        }
+    };
+    xhttp.send();
+}
+
 //change_my_infor.html
 function User_updateInfor() {
     var first_name = document.getElementById("First name").value;

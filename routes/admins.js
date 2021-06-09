@@ -8,6 +8,49 @@ router.get('/', function(req, res, next) {
 
 module.exports = router;
 
+router.post('/getUserInfor',function(req,res,next){
+    req.pool.getConnection( function(err,connection) {
+        var user_id = req.body.u_id;
+        var sql_params = new Array();
+        sql_params.push(user_id);
+        if (err) {
+            res.sendStatus(500);
+            return;
+        }
+        var query = "SELECT * FROM user where ID = ?;";
+        connection.query(query, sql_params,function(err, rows, fields) {
+            connection.release(); // release connection
+            if (err) {
+                res.sendStatus(500);
+                return;
+            }
+            console.log(rows);
+            res.json(rows);
+        });
+    });
+});
+
+router.get('/getAdminInfor',function(req,res,next){
+    req.pool.getConnection( function(err,connection) {
+        var admin_id = req.session.ID;
+        var sql_params = new Array();
+        sql_params.push(admin_id);
+        if (err) {
+            res.sendStatus(500);
+            return;
+        }
+        var query = "SELECT * FROM admin where ID = ?;";
+        connection.query(query, sql_params,function(err, rows, fields) {
+            connection.release(); // release connection
+            if (err) {
+                res.sendStatus(500);
+                return;
+            }
+            res.json(rows);
+        });
+    });
+});
+
 router.post('/updateAdminInfor',function(req,res,next){
     req.pool.getConnection( function(err,connection) {
         var admin_id = req.session.ID;
@@ -72,16 +115,14 @@ router.post('/updateAdminInfor',function(req,res,next){
 
 router.post('/signinAdmin',function(req,res,next){
     req.pool.getConnection( function(err,connection) {
-        var admin_id = req.session.ID;
         var number= req.body.number;
-        var address= req.body.pwd;
+        var password= req.body.pwd;
 
         
 
         var sql_params = new Array();
+        sql_params.push(password);
         sql_params.push(number);
-        sql_params.push(address);
-        sql_params.push(admin_id);
 
         if (err) {
             res.sendStatus(500);
@@ -94,15 +135,15 @@ router.post('/signinAdmin',function(req,res,next){
                 return;
             }
         });
-        var query2 = "select max(ID) from venue";
-        connection.query(query, sql_params,function(err, rows, fields) {
+        var query2 = "select max(ID) as ID from admin";
+        connection.query(query2,function(err, rows, fields) {
             connection.release(); // release connection
             if (err) {
                 res.sendStatus(500);
                 return;
             }
-            var new_aid = row.ID;
-            res.send(new_aid);
+            console.log(rows);
+            res.json(rows);
         });
         
     });
@@ -114,7 +155,7 @@ router.get('/ShowAllUser',function(req,res,next){
             res.sendStatus(500);
             return;
         }
-        var query = "select user.ID,user.health,venue.name,venue.hotspot,trip.arrival_time from user join trip join venue;";
+        var query = "select user.ID,user.health,venue.name,venue.hotspot,trip.arrival_time from user join trip on user.ID = trip.user_id join venue on venue.ID = trip.venue_id;";
         connection.query(query, function(err, rows, fields) {
             connection.release(); // release connection
             if (err) {
@@ -132,7 +173,7 @@ router.get('/ShowPostiveCase',function(req,res,next){
             res.sendStatus(500);
             return;
         }
-        var query = "select user.ID,user.health,venue.name,venue.hotspot,trip.arrival_time from user join trip join venue where user.health = 1;";
+        var query = "select user.ID,user.health,venue.name,venue.hotspot,trip.arrival_time from user join trip on user.ID = trip.user_id join venue on venue.ID = trip.venue_id where user.health = 1;";
         connection.query(query, function(err, rows, fields) {
             connection.release(); // release connection
             if (err) {
@@ -228,7 +269,7 @@ router.get('/ShowAllVenue',function(req,res,next){
             res.sendStatus(500);
             return;
         }
-        var query = "select venue.ID,venue.name,venue.hotspot from venue join manager_venues";
+        var query = "select venue.ID,venue.name,venue.hotspot from venue join manager_venues on venue.ID = manager_venues.venue_id";
         connection.query(query,function(err, rows, fields) {
             connection.release(); // release connection
             if (err) {
@@ -246,7 +287,7 @@ router.get('/ShowHotSpotVenue',function(req,res,next){
             res.sendStatus(500);
             return;
         }
-        var query = "select venue.ID,venue.name,venue.hotspot from venue join manager_venues where hotspot = 1;";
+        var query = "select venue.ID,venue.name,venue.hotspot from venue join manager_venues on venue.ID = manager_venues.venue_id where hotspot = 1;";
         connection.query(query, function(err, rows, fields) {
             connection.release(); // release connection
             if (err) {
@@ -303,6 +344,27 @@ router.get('/jumpto_Venue_edit',function(req,res,next){
         </form>
     </div>`
         );
+});
+
+router.post('/getVenueInfor',function(req,res,next){
+    req.pool.getConnection( function(err,connection) {
+        var v_id = req.body.v_id;
+        var sql_params = new Array();
+        sql_params.push(v_id);
+        if (err) {
+            res.sendStatus(500);
+            return;
+        }
+        var query = "SELECT * FROM venue where ID = ?;";
+        connection.query(query, sql_params,function(err, rows, fields) {
+            connection.release(); // release connection
+            if (err) {
+                res.sendStatus(500);
+                return;
+            }
+            res.json(rows);
+        });
+    });
 });
 
 router.post('/editVenue',function(req,res,next){

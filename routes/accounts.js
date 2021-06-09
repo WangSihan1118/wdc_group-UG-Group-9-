@@ -91,7 +91,6 @@ router.get('/jump_to_Edit_Venue_manager_information',function(req,res,next){
                 <div><label for="Phone number">Phone number</label> <input id="Phone number" type="text" placeholder="">
                 </div>
                 <div><label for="Email">Email</label> <input id="Email" type="text" placeholder=""></div>
-                <div><label for="Home address">Home address</label> <input id="Home address" type="text" placeholder="">
                 </div> <button type="submit" onclick="Manager_updateManagerInfor()"
                     class="pure-button pure-button-primary">Confirm</button>
             </fieldset>
@@ -147,8 +146,6 @@ router.get('/jump_to_admin_change_my_infor',function(req,res,next){
                         placeholder=""></div>
                 <div><label for="Official Contact Number">Official Contact Number</label> <input
                         id="Official Contact Number" type="text" placeholder=""></div>
-                <div><label for="Official Email Address">Official Email Address</label> <input
-                        id="Official Email Address" type="text" placeholder=""></div>
                 <div><label for="Official Address">Official Address</label> <input id="Official Address" type="text"
                         placeholder=""></div> <button type="submit" onclick="Admin_updateAdminInfor()"
                     class="pure-button pure-button-primary">Confirm</button>

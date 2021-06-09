@@ -6,6 +6,7 @@ function jump_to_change_my_infor(){
         }
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("content_area").innerHTML = this.responseText;
+            User_getUserInfor();
             return;
         }
     };
@@ -36,6 +37,7 @@ function jump_to_Edit_Venue_manager_information(){
         }
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("content_area").innerHTML = this.responseText;
+            Manager_getManagerInfor();
             return;
         }
     };
@@ -66,6 +68,7 @@ function jump_to_admin_change_my_infor(){
         }
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("content_area").innerHTML = this.responseText;
+            Admin_getAdminInfor();
             return;
         }
     };

@@ -1,3 +1,18 @@
+function Manager_getManagerInfor(){
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "/managers/getManagerInfor", true);
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var infor = JSON.parse(this.responseText);
+            document.getElementById("First name").value = infor[0].first_name;
+            document.getElementById("Last name").value = infor[0].last_name;
+            document.getElementById("Phone number").value = infor[0].phone_number;
+            document.getElementById("Email").value = infor[0].email;
+            return;
+        }
+    };
+    xhttp.send();
+}
 //Edit_Venue_manager_information.html
 function Manager_updateManagerInfor() {
     var first_name = document.getElementById("First name").value;
@@ -146,11 +161,36 @@ function Manager_jumpto_Venue_edit(){
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("content").innerHTML = this.responseText;
+            Manager_getVenueInfor();
             return;
         }
     };
     xhttp.open("GET", "/managers/jumpto_Venue_edit", true);
     xhttp.send();
+}
+
+function Manager_getVenueInfor(){
+    var vid = document.getElementById("vid_input").value;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var infor = JSON.parse(this.responseText);
+            document.getElementById("Venue Name").value = infor[0].name;
+            document.getElementById("Longtitude").value = infor[0].longtitude;
+            document.getElementById("Latitude").value = infor[0].latitude;
+            document.getElementById("Country").value = infor[0].country;
+            document.getElementById("State").value = infor[0].state;
+            document.getElementById("City").value = infor[0].city;
+            document.getElementById("Suburb").value = infor[0].suburb;
+            document.getElementById("Address").value = infor[0].detailed_address;
+            return;
+        }
+    };
+    xhttp.open("POST", "/managers/getVenueInfor", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send(JSON.stringify({
+        v_id:vid
+    }));
 }
 
 function Manager_editVenue(){

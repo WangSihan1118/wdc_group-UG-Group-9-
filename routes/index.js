@@ -77,7 +77,6 @@ router.post('/register',function(req,res,next){
         }
         connection.query(query, sql_params,function(err, rows, fields) {
             if (err) {
-                console.log(err+"2");
                 res.sendStatus(500);
                 return;
             }

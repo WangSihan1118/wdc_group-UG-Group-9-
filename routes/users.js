@@ -7,6 +7,26 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
+router.get('/getUserInfor',function(req,res,next){
+    req.pool.getConnection( function(err,connection) {
+        var user_id = req.session.ID;
+        var sql_params = new Array();
+        sql_params.push(user_id);
+        if (err) {
+            res.sendStatus(500);
+            return;
+        }
+        var query = "SELECT * FROM user where ID = ?;";
+        connection.query(query, sql_params,function(err, rows, fields) {
+            connection.release(); // release connection
+            if (err) {
+                res.sendStatus(500);
+                return;
+            }
+            res.json(rows);
+        });
+    });
+});
 
 //example
 router.post('/updateInfor',function(req,res,next){
@@ -38,7 +58,7 @@ router.post('/updateInfor',function(req,res,next){
             res.sendStatus(500);
             return;
         }
-        var query = "UPDATE user SET first_name= ?, last_name = ?,phone_number = ?, email = ?,address = ?, health = ? where ID = ?";
+        var query = "UPDATE user SET first_name= ?, last_name = ?,phone_number = ?, email = ?,address1 = ?, health = ? where ID = ?";
         connection.query(query, sql_params,function(err, rows, fields) {
             connection.release(); // release connection
             if (err) {
@@ -60,7 +80,7 @@ router.get('/getTrips',function(req,res,next){
             res.sendStatus(500);
             return;
         }
-        var query = "select user.ID,user.health,venue.name,venue.hotspot,trip.arrival_time from user join trip join venue where user.id = ?;";
+        var query = "select user.ID,user.health,venue.name,venue.hotspot,trip.arrival_time from user join trip on user.ID = trip.user_id join venue on venue.ID = trip.venue_id where user.id = ?;";
         connection.query(query, sql_params,function(err, rows, fields) {
             connection.release(); // release connection
             if (err) {
@@ -81,7 +101,7 @@ router.get('/getHotspots',function(req,res,next){
             res.sendStatus(500);
             return;
         }
-        var query = "select user.ID,user.health,venue.name,venue.hotspot,trip.arrival_time from user join trip join venue where venue.hotspot = 1 and user.id = ?;";
+        var query = "select user.ID,user.health,venue.name,venue.hotspot,trip.arrival_time from user join trip join venue on venue.ID = venue_id where venue.hotspot = 1 and user.id = ?;";
         connection.query(query, sql_params,function(err,rows, fields) {
             connection.release(); // release connection
             if (err) {

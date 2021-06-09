@@ -8,6 +8,27 @@ router.get('/', function(req, res, next) {
 
 module.exports = router;
 
+router.get('/getManagerInfor',function(req,res,next){
+    req.pool.getConnection( function(err,connection) {
+        var manager_id = req.session.ID;
+        var sql_params = new Array();
+        sql_params.push(manager_id);
+        if (err) {
+            res.sendStatus(500);
+            return;
+        }
+        var query = "SELECT * FROM manager where ID = ?;";
+        connection.query(query, sql_params,function(err, rows, fields) {
+            connection.release(); // release connection
+            if (err) {
+                res.sendStatus(500);
+                return;
+            }
+            res.json(rows);
+        });
+    });
+});
+
 router.post('/updateManagerInfor',function(req,res,next){
     req.pool.getConnection( function(err,connection) {
         var managers_id = req.session.ID;
@@ -48,7 +69,7 @@ router.get('/ShowAllVenue',function(req,res,next){
             res.sendStatus(500);
             return;
         }
-        var query = "select venue.ID,venue.name,venue.hotspot from venue join manager_venues where manager_id = ?";
+        var query = "select venue.ID,venue.name,venue.hotspot from venue join manager_venues on venue.ID = venue_id where manager_id = ?";
         connection.query(query, sql_params,function(err, rows, fields) {
             connection.release(); // release connection
             if (err) {
@@ -69,7 +90,7 @@ router.get('/ShowHotSpotVenue',function(req,res,next){
             res.sendStatus(500);
             return;
         }
-        var query = "select venue.ID,venue.name,venue.hotspot from venue join manager_venues where hotspot = 1 and manager_id = ?;";
+        var query = "select venue.ID,venue.name,venue.hotspot from venue join manager_venues on venue.ID = venue_id where hotspot = 1 and manager_id = ?;";
         connection.query(query,sql_params, function(err, rows, fields) {
             connection.release(); // release connection
             if (err) {
@@ -101,7 +122,7 @@ router.get('/jumpto_Venue_CreateNew',function(req,res,next){
                         <option value="Hotspot">Flagged as hotspot</option>
                         <option value="Not_Hotspot" selected="selected">Not hotspot</option>
                     </select> 
-                <button type="submit" class="pure-button pure-button-primary onclick = "Manager_createVenue()">Create</button>
+                <button type="submit" class="pure-button pure-button-primary" onclick = "Manager_createVenue()">Create</button>
             </fieldset>
         </form>
     </div>`
@@ -178,29 +199,48 @@ router.post('/createVenue',function(req,res,next){
         });
         
         var query2 = "select max(ID) as ID from venue";
+        var new_vid;
         connection.query(query2,function(err, rows, fields) {
             if (err) {
                 res.sendStatus(500);
                 return;
             }
-            var new_vid = JSON.parse(JSON.stringify(rows))[0].ID;
-        });
-        
-        var sql_params2 = new Array();
-        var manager_id = req.session.ID;
-        sql_params2.push(manager_id);
-        sql_params2.push(new_vid);
-        var query3 = 'INSERT INTO manager_venues(manager_id,venue_id) VALUES (?,?);';
-        connection.query(query3, sql_params2,function(err, rows, fields) {
+            var sql_params2 = new Array();
+            var manager_id = req.session.ID;
+            sql_params2.push(manager_id);
+            sql_params2.push(new_vid);
+            var query3 = 'INSERT INTO manager_venues(manager_id,venue_id) VALUES (?,?);';
+            connection.query(query3, sql_params2,function(err, rows, fields) {
             connection.release(); // release connection
             if (err) {
                 res.sendStatus(500);
                 return;
             }
         });
+        });
     });
 });
 
+router.post('/getVenueInfor',function(req,res,next){
+    req.pool.getConnection( function(err,connection) {
+        var venue_id = req.body.v_id;
+        var sql_params = new Array();
+        sql_params.push(venue_id);
+        if (err) {
+            res.sendStatus(500);
+            return;
+        }
+        var query = "SELECT * FROM venue where ID = ?;";
+        connection.query(query, sql_params,function(err, rows, fields) {
+            connection.release(); // release connection
+            if (err) {
+                res.sendStatus(500);
+                return;
+            }
+            res.json(rows);
+        });
+    });
+});
 
 router.post('/editVenue',function(req,res,next){
     req.pool.getConnection( function(err,connection) {
@@ -248,18 +288,20 @@ router.post('/editVenue',function(req,res,next){
 router.post('/ViewCheckInHistory',function(req,res,next){
     var sql_params = new Array();
     var manager_id = req.session.ID;
-    sql_params.push(manager_id);
     var v_id = req.body.id;
     sql_params.push(v_id);
+    sql_params.push(manager_id);
+
     req.pool.getConnection( function(err,connection) {
         if (err) {
             res.sendStatus(500);
             return;
         }
-        var query = "select user.ID,user.health,venue.name,venue.hotspot,trip.arrival_time from user join trip join venue where venue.ID = ?;";
+        var query = "select user.ID,user.health,venue.name,venue.hotspot,trip.arrival_time from user join trip on user.ID = trip.user_id join venue on trip.venue_id = venue.ID join manager_venues on venue.ID = manager_venues.venue_id where manager_venues.venue_id = ? and manager_venues.manager_id = ?;";
         connection.query(query, sql_params,function(err, rows, fields) {
             connection.release(); // release connection
             if (err) {
+                console.log(err);
                 res.sendStatus(500);
                 return;
             }
