@@ -9,6 +9,7 @@ router.get('/', function(req, res, next) {
 module.exports = router;
 
 router.get('/jump_to_change_my_infor',function(req,res,next){
+    if(req.session.type == "user"){
     res.send(
         `
             <div id="User_Infor">
@@ -47,9 +48,12 @@ router.get('/jump_to_change_my_infor',function(req,res,next){
         </form>
     </div>
         `
-    );
+    );}else{
+        res.sendStatus(403);
+    }
 });
 router.get('/jump_to_view_my_trip',function(req,res,next){
+    if(req.session.type =="user"){
     res.send(
         `
             <div id="userTrip">
@@ -71,9 +75,12 @@ router.get('/jump_to_view_my_trip',function(req,res,next){
         <table></table>
     </div>
         `
-    );
+    );}else{
+        res.sendStatus(403);
+    }
 });
 router.get('/jump_to_Edit_Venue_manager_information',function(req,res,next){
+    if(req.session.type =="manager"){
     res.send(
         `
                 <div id="Manager_Infor">
@@ -91,9 +98,12 @@ router.get('/jump_to_Edit_Venue_manager_information',function(req,res,next){
         </form>
     </div>
         `
-    );
+    );}else{
+        res.sendStatus(403);
+    }
 });
 router.get('/jump_to_Show_my_venue',function(req,res,next){
+    if(req.session.type =="manager"){
     res.send(
         `
                     <div id = "Owner_manage_venue">
@@ -122,9 +132,12 @@ router.get('/jump_to_Show_my_venue',function(req,res,next){
             <div>
         </div>
         `
-    );
+    );}else{
+        res.sendStatus(403);
+    }
 });
 router.get('/jump_to_admin_change_my_infor',function(req,res,next){
+    if(req.session.type == "admin"){
     res.send(
         `
             <div id="admin_infor">
@@ -143,9 +156,12 @@ router.get('/jump_to_admin_change_my_infor',function(req,res,next){
         </form>
     </div>
         `
-    );
+    );}else{
+        res.sendStatus(403);
+    }
 });
 router.get('/jump_to_RegisterAdmin',function(req,res,next){
+    if(req.session.type =="admin"){
     res.send(
         `
           <div id = "login_body">
@@ -168,9 +184,12 @@ router.get('/jump_to_RegisterAdmin',function(req,res,next){
     </form>
   </div>
         `
-    );
+    );}else{
+        res.sendStatus(403);
+    }
 });
 router.get('/jump_to_admin_manage_user',function(req,res,next){
+    if(req.session.type =="admin"){
     res.send(
         `
                 <div id = "manage_user">
@@ -181,7 +200,7 @@ router.get('/jump_to_admin_manage_user',function(req,res,next){
             
             <form class="pure-form">
                 <fieldset>
-                    <input type="text" id = "uid_input" class = "ID_input" width = "80%" placeholder=" Please input the Venue ID your want to manage first">
+                    <input type="text" id = "uid_input" class = "ID_input" width = "80%" placeholder=" Please input the User ID your want to manage first">
                     <button class="pure-button" type = "button" onclick = "Jumpto_Admin_update_user()">Edit the User</button>
                 </fieldset>
             </form>
@@ -199,9 +218,12 @@ router.get('/jump_to_admin_manage_user',function(req,res,next){
             </div>
         </div>
         `
-    );
+    );}else{
+        res.sendStatus(403);
+    }
 });
 router.get('/jump_to_admin_manage_venue',function(req,res,next){
+    if(req.session.type =="admin"){
     res.send(
         `
                 <div id = "Owner_manage_venue">
@@ -229,5 +251,7 @@ router.get('/jump_to_admin_manage_venue',function(req,res,next){
             <div>
         </div>
         `
-    );
+    );}else{
+        res.sendStatus(403);
+    }
 });

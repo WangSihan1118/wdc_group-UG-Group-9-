@@ -1,6 +1,9 @@
 function jump_to_change_my_infor(){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 403){
+            alert("Not Authorized");
+        }
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("content_area").innerHTML = this.responseText;
             return;
@@ -13,6 +16,9 @@ function jump_to_change_my_infor(){
 function jump_to_view_my_trip(){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 403){
+            alert("Not Authorized");
+        }
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("content_area").innerHTML = this.responseText;
             return;
@@ -25,6 +31,9 @@ function jump_to_view_my_trip(){
 function jump_to_Edit_Venue_manager_information(){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 403){
+            alert("Not Authorized");
+        }
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("content_area").innerHTML = this.responseText;
             return;
@@ -37,6 +46,9 @@ function jump_to_Edit_Venue_manager_information(){
 function jump_to_Show_my_venue(){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 403){
+            alert("Not Authorized");
+        }
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("content_area").innerHTML = this.responseText;
             return;
@@ -49,6 +61,9 @@ function jump_to_Show_my_venue(){
 function jump_to_admin_change_my_infor(){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 403){
+            alert("Not Authorized");
+        }
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("content_area").innerHTML = this.responseText;
             return;
@@ -61,6 +76,9 @@ function jump_to_admin_change_my_infor(){
 function jump_to_RegisterAdmin(){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 403){
+            alert("Not Authorized");
+        }
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("content_area").innerHTML = this.responseText;
             return;
@@ -73,6 +91,9 @@ function jump_to_RegisterAdmin(){
 function jump_to_admin_manage_user(){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 403){
+            alert("Not Authorized");
+        }
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("content_area").innerHTML = this.responseText;
             return;
@@ -85,6 +106,9 @@ function jump_to_admin_manage_user(){
 function jump_to_admin_manage_venue(){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 403){
+            alert("Not Authorized");
+        }
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("content_area").innerHTML = this.responseText;
             return;

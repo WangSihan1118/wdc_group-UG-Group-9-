@@ -204,12 +204,13 @@ router.post('/updateUserInfor',function(req,res,next){
         sql_params.push(address);
         sql_params.push(health);
         sql_params.push(uid);
-
+        
+        console.log(sql_params);
         if (err) {
             res.sendStatus(500);
             return;
         }
-        var query = "UPDATE user SET first_name= ?, last_name = ?,phone_number = ?, email = ?,address = ?, health = ? where ID = ?";
+        var query = "UPDATE user SET first_name= ?, last_name = ?,phone_number = ?, email = ?,address1 = ?, health = ? where ID = ?";
         connection.query(query, sql_params,function(err, rows, fields) {
             connection.release(); // release connection
             if (err) {

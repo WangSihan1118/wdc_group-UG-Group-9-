@@ -10,6 +10,16 @@ var accountsRouter = require('./routes/accounts');
 var adminsRouter = require('./routes/admins');
 var managersRouter = require('./routes/managers');
 
+
+var CheckLogin = function (req, res, next) {
+    if(req.session.login){
+       next();
+    }else{
+       return res.redirect("../login.html");
+       //res.send('<script>window.location.href="login.html";</script>');
+    }
+};
+
 var mysql = require('mysql');
 
 var app = express();
@@ -36,6 +46,7 @@ app.use(session({ // //
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use(CheckLogin);
 app.use('/users', usersRouter);
 app.use('/accounts', accountsRouter);
 app.use('/admins', adminsRouter);
