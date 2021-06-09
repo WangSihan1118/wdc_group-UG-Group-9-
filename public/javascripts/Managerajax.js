@@ -157,16 +157,24 @@ function Manager_createVenue() {
 
 //manage_venue.html
 function Manager_jumpto_Venue_edit(){
+    var vid = document.getElementById("vid_input").value;
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 403) {
+            alert("Please check your input");
+            return;
+        }
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("content").innerHTML = this.responseText;
             Manager_getVenueInfor();
             return;
         }
     };
-    xhttp.open("GET", "/managers/jumpto_Venue_edit", true);
-    xhttp.send();
+    xhttp.open("POST", "/managers/jumpto_Venue_edit", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send(JSON.stringify({
+        v_id:vid
+    }));
 }
 
 function Manager_getVenueInfor(){

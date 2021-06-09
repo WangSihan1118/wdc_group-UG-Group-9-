@@ -38,6 +38,7 @@ router.post('/login',function(req,res,next){
         connection.query(query, sql_params,function(err, rows, fields) {
             connection.release(); // release connection
             if (err) {
+                console.log(err);
                 res.sendStatus(500);
                 return;
             }

@@ -224,9 +224,7 @@ function Jumpto_Admin_manage_venue(){
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", "/admins/Admin_Manage_venue", true);
     xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.send(JSON.stringify({ 
-
-    }));
+    xhttp.send();
 }
 
 function Jumpto_Admin_View_venue_trip_history(){

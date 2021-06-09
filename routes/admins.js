@@ -24,7 +24,6 @@ router.post('/getUserInfor',function(req,res,next){
                 res.sendStatus(500);
                 return;
             }
-            console.log(rows);
             res.json(rows);
         });
     });
@@ -142,7 +141,6 @@ router.post('/signinAdmin',function(req,res,next){
                 res.sendStatus(500);
                 return;
             }
-            console.log(rows);
             res.json(rows);
         });
         
@@ -308,7 +306,7 @@ router.post('/ViewCheckInHistory',function(req,res,next){
             res.sendStatus(500);
             return;
         }
-        var query = "select user.ID,user.health,venue.name,venue.hotspot,trip.arrival_time from user join trip join venue where venue.ID = ?;";
+        var query = "select user.ID,user.health,venue.name,venue.hotspot,trip.arrival_time from user join trip on user.ID = trip.user_id join venue on trip.venue_id = venue.ID join manager_venues on venue.ID = manager_venues.venue_id where venue.ID = ?;";
         connection.query(query, sql_params,function(err, rows, fields) {
             connection.release(); // release connection
             if (err) {
@@ -339,7 +337,7 @@ router.get('/jumpto_Venue_edit',function(req,res,next){
                         <option value="Hotspot">Flagged as hotspot</option>
                         <option value="Not_Hotspot" selected="selected">Not hotspot</option>
                     </select> 
-                <button type="submit" class="pure-button pure-button-primary onclick = "Admin_editVenue()">Update</button>
+                <button type="submit" class="pure-button pure-button-primary" onclick = "Admin_editVenue()">Update</button>
             </fieldset>
         </form>
     </div>`
@@ -380,7 +378,7 @@ router.post('/editVenue',function(req,res,next){
     var Address = req.body.Address; 
     var hotspot = req.body.hotspot;
     var vid = req.body.v_id;
-    if(req.body.hotspot == "Flagged as hotspot"){
+    if(req.body.hotspot == "Hotspot"){
         hotspot = "1";
     }else{
         hotspot = "0";
@@ -399,10 +397,11 @@ router.post('/editVenue',function(req,res,next){
     sql_params1.push(hotspot);
     sql_params1.push(vid);
 
-        var query3 = "UPDATE venue SET name = ?,longtitude = ?,latitude = ?,country = ?,state = ?,city = ?,suburb = ?,detailed_address = ?,,hotspot = ? WHERE ID = ?;";
+        var query3 = "UPDATE venue SET name = ?,longtitude = ?,latitude = ?,country = ?,state = ?,city = ?,suburb = ?,detailed_address = ?,hotspot = ? WHERE ID = ?;";
         connection.query(query3, sql_params1,function(err, rows, fields) {
             connection.release(); // release connection
             if (err) {
+                console.log(err);
                 res.sendStatus(500);
                 return;
             }
