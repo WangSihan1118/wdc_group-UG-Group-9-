@@ -8,6 +8,10 @@ router.get('/', function(req, res, next) {
 
 module.exports = router;
 
+function HashSalt(pwd){
+    return pwd;
+}
+
 router.post('/login',function(req,res,next){
     req.pool.getConnection( function(err,connection) {
         //var user_id = req.session.user_id;
@@ -38,7 +42,6 @@ router.post('/login',function(req,res,next){
         connection.query(query, sql_params,function(err, rows, fields) {
             connection.release(); // release connection
             if (err) {
-                console.log(err);
                 res.sendStatus(500);
                 return;
             }
@@ -104,6 +107,36 @@ router.post('/checkin',function(req,res,next){
     req.pool.getConnection( function(err,connection) {
         var user_id = req.session.ID;
         var venue_id= req.body.ck;
+        var t = new Date().toISOString().slice(0, 19).replace('T', ' ');
+        
+        
+        var sql_params = new Array();
+        sql_params.push(t);
+        sql_params.push(venue_id);
+        sql_params.push(user_id);
+
+        if (err) {
+            res.sendStatus(500);
+            return;
+        }
+        var query = "INSERT INTO trip(arrival_time,venue_id,user_id) VALUES(?,?,?);";
+        connection.query(query, sql_params,function(err, rows, fields) {
+            connection.release(); // release connection
+            if (err) {
+                res.sendStatus(500);
+                return;
+            }
+            res.send(true);
+        });
+    });
+});
+
+
+//Reserve for QR code checkin
+router.get('/QRcheckin',function(req,res,next){
+    req.pool.getConnection( function(err,connection) {
+        var user_id = req.session.ID;
+        var venue_id;
         var t = new Date().toISOString().slice(0, 19).replace('T', ' ');
         
         

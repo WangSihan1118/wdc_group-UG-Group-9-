@@ -8,6 +8,10 @@ router.get('/', function(req, res, next) {
 
 module.exports = router;
 
+function HashSalt(pwd){
+    return pwd;
+}
+
 router.post('/getUserInfor',function(req,res,next){
     req.pool.getConnection( function(err,connection) {
         var user_id = req.body.u_id;
