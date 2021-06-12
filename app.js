@@ -15,7 +15,7 @@ var CheckLogin = function (req, res, next) {
     if(req.session.login){
        next();
     }else{
-       return res.redirect("../login.html");
+       return res.redirect(307, '/login.html');
     }
 };
 

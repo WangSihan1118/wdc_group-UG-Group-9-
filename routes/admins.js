@@ -248,7 +248,6 @@ router.post('/updateUserInfor',function(req,res,next){
         sql_params.push(health);
         sql_params.push(uid);
         
-        console.log(sql_params);
         if (err) {
             res.sendStatus(500);
             return;
@@ -405,7 +404,6 @@ router.post('/editVenue',function(req,res,next){
         connection.query(query3, sql_params1,function(err, rows, fields) {
             connection.release(); // release connection
             if (err) {
-                console.log(err);
                 res.sendStatus(500);
                 return;
             }
