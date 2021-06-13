@@ -171,7 +171,7 @@ router.post('/jumpto_Venue_edit',function(req,res,next){
                                 <option value="Hotspot">Flagged as hotspot</option>
                                 <option value="Not_Hotspot" selected="selected">Not hotspot</option>
                             </select> 
-                        <button type="submit" class="pure-button pure-button-primary onclick = "Manager_editVenue()">Update</button>
+                        <button type="submit" class="pure-button pure-button-primary" onclick = "Manager_editVenue()">Update</button>
                     </fieldset>
                 </form>
             </div>`
@@ -303,35 +303,18 @@ router.post('/editVenue', function (req, res, next) {
         sql_params1.push(Address);
         sql_params1.push(hotspot);
         sql_params1.push(vid);
-        //
-        var m_id = req.session.ID;
-        var sql_params2 = new Array();
-        sql_params2.push(vid);
-        sql_params2.push(m_id);
         if (err) {
             res.sendStatus(500);
             return;
         }
-        var query2 = "SELECT * FROM venue join manager_venues on venue.ID = manager_venues.venue_id where manager_venues.venue_id = ? and manager_venues.manager_id= ?;";
-        connection.query(query2, sql_params2, function (err, rows, fields) {
+        //   
+        var query = "UPDATE venue SET name = ?,longtitude = ?,latitude = ?,country = ?,state = ?,city = ?,suburb = ?,detailed_address = ?,hotspot = ? WHERE ID = ?;";
+        connection.query(query, sql_params1, function (err, rows, fields) {
             connection.release(); // release connection
             if (err) {
                 res.sendStatus(500);
                 return;
             }
-            if (rows.length == 0) {
-                res.sendStatus(403);
-            }
-        //   
-
-            var query3 = "UPDATE venue SET name = ?,longtitude = ?,latitude = ?,country = ?,state = ?,city = ?,suburb = ?,detailed_address = ?,,hotspot = ? WHERE ID = ?;";
-            connection.query(query3, sql_params1, function (err, rows, fields) {
-                connection.release(); // release connection
-                if (err) {
-                    res.sendStatus(500);
-                    return;
-                }
-            });
         });
     });
 });
