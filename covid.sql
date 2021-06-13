@@ -177,8 +177,8 @@ DROP TABLE IF EXISTS `venue`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `venue` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `latitude` double DEFAULT NULL,
   `longtitude` double DEFAULT NULL,
+  `latitude` double DEFAULT NULL,
   `country` varchar(45) DEFAULT NULL,
   `state` varchar(45) DEFAULT NULL,
   `city` varchar(45) DEFAULT NULL,
@@ -197,7 +197,8 @@ CREATE TABLE `venue` (
 
 LOCK TABLES `venue` WRITE;
 /*!40000 ALTER TABLE `venue` DISABLE KEYS */;
-INSERT INTO `venue` VALUES (1,-34.92610168457031,138.59988403320312,NULL,NULL,NULL,NULL,NULL,'Adelaide',NULL,1);
+INSERT INTO `venue` VALUES (1,138.59988403320312,-34.92610168457031,NULL,NULL,NULL,NULL,NULL,'Adelaide',NULL,1);
+INSERT INTO `venue` VALUES (2,138.6,-35,NULL,NULL,NULL,NULL,NULL,'Adelaide',NULL,1);
 /*!40000 ALTER TABLE `venue` ENABLE KEYS */;
 UNLOCK TABLES;
 
